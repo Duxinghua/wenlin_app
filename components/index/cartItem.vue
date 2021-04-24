@@ -77,7 +77,7 @@
 			.imgitem{
 				width: 226rpx;
 				height: 173rpx;
-				margin-right: 15rpx;
+				margin-right: 14rpx;
 				border-radius: 10rpx;
 				position: relative;
 			}

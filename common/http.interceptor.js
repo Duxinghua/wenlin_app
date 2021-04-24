@@ -3,7 +3,6 @@
 const wx = {
 	appid:'wx370ab1fa38538af2'
 }
-var token = uni.getStorageSync('token')
 const install = (Vue, vm) => {
 	Vue.prototype.$u.http.setConfig({
 		baseUrl: 'https://sq.wenlinapp.com/api',
@@ -18,7 +17,7 @@ const install = (Vue, vm) => {
 	// 请求拦截，配置Token等参数
 	Vue.prototype.$u.http.interceptor.request = (config) => {
 		console.log(config,'config')
-		config.header['XX-Token'] = token
+		config.header['XX-Token'] = uni.getStorageSync('token')
 		config.header['XX-Wxapp-AppId'] = wx.appid
 		config.header['XX-Device-Type'] = 'wxapp'
 		

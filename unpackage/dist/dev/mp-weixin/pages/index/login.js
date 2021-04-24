@@ -151,16 +151,19 @@ var _default =
     uni.login({
       success: function success(res) {
         that.$u.api.wxAdminLoginByCode({ code: res.code }).then(function (result) {
-          uni.setStorageSync('token', result.token);
+
           uni.setStorageSync('wxadmin', result.wxadmin);
-          setTimeout(function () {
-            if (result.token.length > 2) {
-              uni.redirectTo({
-                url: '/pages/index/index' });
+          if (result.token.length > 2) {
+            uni.setStorage({
+              key: 'token',
+              data: result.token,
+              success: function success() {
+                uni.reLaunch({
+                  url: './index' });
 
-            }
-          }, 500);
+              } });
 
+          }
         });
       } });
 

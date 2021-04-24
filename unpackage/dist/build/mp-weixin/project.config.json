@@ -10,7 +10,7 @@
 		"postcss": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.10.4",
+	"libVersion": "2.14.1",
 	"appid": "wx370ab1fa38538af2",
 	"projectname": "wenlin_app",
 	"condition": {

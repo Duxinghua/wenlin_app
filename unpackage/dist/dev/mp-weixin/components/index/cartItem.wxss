@@ -42,7 +42,7 @@
 .listitem .imglist .imgitem.data-v-689a562a {
   width: 226rpx;
   height: 173rpx;
-  margin-right: 15rpx;
+  margin-right: 14rpx;
   -webkit-border-radius: 10rpx;
           border-radius: 10rpx;
   position: relative;

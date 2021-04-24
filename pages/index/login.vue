@@ -19,16 +19,19 @@
 			uni.login({
 				success: (res) => {
 					that.$u.api.wxAdminLoginByCode({code:res.code}).then((result)=>{
-						uni.setStorageSync('token',result.token)
+				
 						uni.setStorageSync('wxadmin',result.wxadmin)
-						setTimeout(()=>{
 							if(result.token.length > 2){
-								uni.redirectTo({
-									url:'/pages/index/index'
+								uni.setStorage({
+									key:'token',
+									data:result.token,
+									success: () => {
+											uni.reLaunch({
+												url:'./index'
+											})
+									}
 								})
 							}
-						},500)
-
 					})
 				}
 			})

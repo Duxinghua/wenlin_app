@@ -27,8 +27,8 @@ let mpShare = require('uview-ui/libs/mixin/mpShare.js');
 Vue.mixin(mpShare);
 
 //公共处理方法
-// let VueMixin = require('@/mixin/mixin.js');
-// Vue.mixin(VueMixin);
+let VueMixin = require('@/mixin/mixin.js');
+Vue.mixin(VueMixin);
 
 Vue.prototype.upload = function(params,data){
 	return wxUploadFile(params,data,'https://sq.wenlinapp.com/api/wxadmin/upload/one')

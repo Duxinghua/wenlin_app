@@ -321,10 +321,15 @@ __webpack_require__.r(__webpack_exports__);
       selectObject: {} };
 
   },
-  onLoad: function onLoad() {
-    this.total = 0;
-    this.page = 1;
-    this.getList();
+  onLoad: function onLoad() {var _this = this;
+    this.checkToken(function (result) {
+      if (result) {
+        _this.total = 0;
+        _this.page = 1;
+        _this.getList();
+      }
+    });
+
   },
   onShow: function onShow() {
 
@@ -374,17 +379,17 @@ __webpack_require__.r(__webpack_exports__);
     navHandler: function navHandler(index) {
       this.navindex = index;
     },
-    getList: function getList(ismore) {var _this = this;
+    getList: function getList(ismore) {var _this2 = this;
       var data = {
         page: this.page,
         page_size: this.page_size };
 
       this.$u.api.getIllegalstopPublish(data).then(function (result) {
-        _this.total = result.total;
+        _this2.total = result.total;
         if (ismore) {
-          _this.list = _this.list.concat(result.list);
+          _this2.list = _this2.list.concat(result.list);
         } else {
-          _this.list = result.list;
+          _this2.list = result.list;
         }
       });
     },
