@@ -13,15 +13,8 @@
 			/**
 			 * h5，app-plus(nvue下也为app-plus)，mp-weixin，mp-alipay......
 			 */
-			console.log(111)
-			var that = this
-			uni.login({
-				success: (res) => {
-					that.$u.api.wxAdminLoginByCode({code:res.code}).then((result)=>{
-						console.log(result)
-					})
-				}
-			})
+
+
 			
 		},
 	}

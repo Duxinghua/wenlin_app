@@ -19,7 +19,7 @@
 				</view>
 			</view>
 			<view class="list">
-				<view class="listitem" v-for="(item,index) in list" :key="index">
+<!-- 				<view class="listitem" v-for="(item,index) in list" :key="index">
 					<view class="title">
 						<text class="label" v-if="false">
 							#物业通知
@@ -33,13 +33,14 @@
 					</view>
 					<view class="tool" @click="selectHandler(item)">
 						<view class="time">
-							04-12 12:00
+							{{item.create_time | formatTime}}
 						</view>
 						<view class="arrow" >
 							<view class="aritem" v-for="(item,index) in 3" :index="index" :key="index"></view>
 						</view>
 					</view>
-				</view>
+				</view> -->
+				<CartItem v-for="(item,index) in list" :key="index" :item="item" @selectHandler="selectHandler"/>
 			</view>
 			<image src="../../static/image/idea.png" class="idea" @click="go(4)"></image>
 		</view>
@@ -107,9 +108,11 @@
 
 <script>
 	import navigationCustom from '@/components/struggler-navigationCustom/navigation-custom';
+	import CartItem from '@/components/index/cartItem.vue'
 	export default{
 		components:{
-			navigationCustom
+			navigationCustom,
+			CartItem
 		},
 		data(){
 			return{
@@ -164,12 +167,12 @@
 			}
 		},
 		onLoad() {
-			
-		},
-		onShow() {
 			this.total = 0
 			this.page = 1
 			this.getList()
+		},
+		onShow() {
+
 		},
 		onHide() {
 			this.pushActiveShow = false

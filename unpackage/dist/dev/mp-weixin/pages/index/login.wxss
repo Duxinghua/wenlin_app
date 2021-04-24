@@ -31,6 +31,10 @@
   margin: 87rpx auto 29rpx auto;
   -webkit-border-radius: 45rpx;
           border-radius: 45rpx;
+  border: none;
+}
+.login button:after {
+  border: none;
 }
 .login .ubtn {
   background: #EEF2FA;

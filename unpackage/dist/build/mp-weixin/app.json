@@ -1,0 +1,22 @@
+{
+  "pages": [
+    "pages/index/login",
+    "pages/index/index",
+    "pages/index/ulogin",
+    "pages/index/idea",
+    "pages/index/exposure",
+    "pages/index/carsearch",
+    "pages/index/carinfo",
+    "pages/index/notices",
+    "pages/index/activity"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "问邻机构",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#FFFFFF",
+    "navigationStyle": "custom"
+  },
+  "usingComponents": {}
+}

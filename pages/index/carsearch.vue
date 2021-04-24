@@ -77,9 +77,11 @@
 		},
 		methods:{
 			cartHandler(item){
-				uni.navigateTo({
-					url:'/pages/index/carinfo?id='+item.id
-				})
+				if(this.searchFlag){
+					uni.navigateTo({
+						url:'/pages/index/carinfo?id='+item.car_id
+					})
+				}
 			},
 			getListTop(ismore){
 				if(!this.searchFlag){

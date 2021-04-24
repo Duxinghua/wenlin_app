@@ -3,48 +3,49 @@
 		<navigation-custom :config="config" :scrollTop="scrollTop" @customConduct="customConduct" :scrollMaxHeight="scrollMaxHeight" />
 		<view class="content">
 			<view class="header">
-				津K12345
+				{{detail.car_detail.car_num}}
 			</view>
 			<view class="cardes">
 				<u-section line-color="#FF9C00" font-size="36" color="#020433" title="基本信息" :arrow="false" :right="false"></u-section>
 				<view class="cdlist">
 					<view class="cditem">
-						车主姓名：张XX
+						车主姓名：{{detail.car_detail.user_name}}
 					</view>
 					<view class="cditem">
-						所在小区：香雪苑
+						所在小区：{{detail.car_detail.community.title}}
 					</view>
 					<view class="cditem">
-						门牌号：xx-xx-xxx
+						门牌号：{{detail.car_detail.house_number}}
 					</view>
 					<view class="cditem">
-						性别：男
+						性别：{{sexlist[detail.car_detail.user_sex]}}
 					</view>
 					<view class="cditem">
-						职业：教师
+						职业：{{detail.car_detail.occupation}}
 					</view>
 					<view class="cditem">
-						车位性质：地上
+						车位性质：{{detail.car_detail.parking_properties}}
 					</view>
 					<view class="cditem">
-						车位编号：无
+						车位编号：{{detail.car_detail.parking_num}}
 					</view>
 					<view class="cditem">
-						其他：无
+						其他：{{detail.car_detail.mark}}
 					</view>
 				</view>
 			</view>
 			<view class="cardes">
-				<u-section line-color="#FF9C00" font-size="36" color="#020433" title="违停信息（10）" :arrow="false" :right="false"></u-section>
-				<view class="cdlist">
+				<u-section line-color="#FF9C00" font-size="36" color="#020433" title="违停信息" :arrow="false" :right="false"></u-section>
+				<view class="list">
+					<CartItem v-for="(item,index) in detail.illegal_list" :key="index" :item="item" @selectHandler="selectHandler"/>
 				</view>
 			</view>
 		</view>
 		<view class="footer">
-			<view class="btn cancel">
+			<view class="btn cancel" @click="pushCar">
 				添加违停
 			</view>
-			<view class="btn sc">
+			<view class="btn sc" @click="call">
 				联系车主
 			</view>
 		</view>
@@ -53,12 +54,19 @@
 
 <script>
 	import navigationCustom from '@/components/struggler-navigationCustom/navigation-custom';
+	import CartItem from '@/components/index/cartItem.vue'
 	export default{
 		components:{
-			navigationCustom
+			navigationCustom,
+			CartItem
 		},
 		data(){
 			return{
+				sexlist:[
+					'女',
+					'男',
+					'保密'
+				],
 				num:3,
 				config: {
 					title: '车辆查询详情', //title
@@ -76,7 +84,11 @@
 				keyword:'',
 				carInputShow:false,
 				nocarShow:false,
-				id:''
+				id:'',
+				detail:{
+					car_detail:{},
+					illegal_list:[]
+				}
 			}
 		},
 		onLoad(options) {
@@ -89,7 +101,23 @@
 					car_id:this.id
 				}
 				this.$u.api.carDetail(data).then((result)=>{
-					console.log(result)
+					this.$nextTick(() => {
+						this.detail = result
+						this.$forceUpdate()
+					})
+					
+				})
+			},
+			pushCar(){
+				uni.redirectTo({
+
+					url:'/pages/index/exposure'
+				})
+			},
+			call(){
+				var that = this
+				uni.makePhoneCall({
+					phoneNumber:that.detail.car_detail.user_mobile
 				})
 			}
 		}
@@ -147,6 +175,11 @@
 					.cditem:nth-last-of-type(1){
 						width:100%;
 					}
+				}
+				.list{
+					display: flex;
+					flex-direction: column;
+					padding-bottom: 200rpx;
 				}
 			}
 		}

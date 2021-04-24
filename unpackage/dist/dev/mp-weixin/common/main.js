@@ -10,6 +10,7 @@
 /* WEBPACK VAR INJECTION */(function(createApp) {__webpack_require__(/*! uni-pages */ 4);var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
 var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 5));
 var _request = __webpack_require__(/*! common/request */ 11);
+var _tool = _interopRequireDefault(__webpack_require__(/*! common/tool.js */ 12));
 
 
 
@@ -20,23 +21,11 @@ var _request = __webpack_require__(/*! common/request */ 11);
 
 
 
-var _uviewUi = _interopRequireDefault(__webpack_require__(/*! uview-ui */ 12));
+var _uviewUi = _interopRequireDefault(__webpack_require__(/*! uview-ui */ 13));
 
 
 
-var _store = _interopRequireDefault(__webpack_require__(/*! @/store */ 41));
-
-
-
-
-
-
-
-
-
-
-
-
+var _store = _interopRequireDefault(__webpack_require__(/*! @/store */ 42));
 
 
 
@@ -51,19 +40,37 @@ var _store = _interopRequireDefault(__webpack_require__(/*! @/store */ 41));
 
 
 
-var _httpInterceptor = _interopRequireDefault(__webpack_require__(/*! @/common/http.interceptor.js */ 233));
 
 
 
-var _httpApi = _interopRequireDefault(__webpack_require__(/*! @/common/http.api.js */ 232));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}_vue.default.config.productionTip = false;_App.default.mpType = 'app'; // 此处为演示Vue.prototype使用，非uView的功能部分
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _httpInterceptor = _interopRequireDefault(__webpack_require__(/*! @/common/http.interceptor.js */ 44));
+
+
+
+var _httpApi = _interopRequireDefault(__webpack_require__(/*! @/common/http.api.js */ 45));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}_vue.default.config.productionTip = false;_App.default.mpType = 'app'; // 此处为演示Vue.prototype使用，非uView的功能部分
 _vue.default.prototype.vuePrototype = ''; // 引入全局uView
 _vue.default.use(_uviewUi.default); // 此处为演示vuex使用，非uView的功能部分
 // 引入uView提供的对vuex的简写法文件
-var vuexStore = __webpack_require__(/*! @/store/$u.mixin.js */ 43);_vue.default.mixin(vuexStore); // 引入uView对小程序分享的mixin封装
-var mpShare = __webpack_require__(/*! uview-ui/libs/mixin/mpShare.js */ 44);_vue.default.mixin(mpShare); //公共处理方法
+var vuexStore = __webpack_require__(/*! @/store/$u.mixin.js */ 46);_vue.default.mixin(vuexStore); // 引入uView对小程序分享的mixin封装
+var mpShare = __webpack_require__(/*! uview-ui/libs/mixin/mpShare.js */ 47);_vue.default.mixin(mpShare); //公共处理方法
 // let VueMixin = require('@/mixin/mixin.js');
 // Vue.mixin(VueMixin);
-_vue.default.prototype.upload = function (params, data) {return (0, _request.wxUploadFile)(params, data, 'https://sq.wenlinapp.com/api/wxadmin/upload/one');}; // 由于微信小程序的运行机制问题，需声明如下一行，H5和APP非必填
+_vue.default.prototype.upload = function (params, data) {return (0, _request.wxUploadFile)(params, data, 'https://sq.wenlinapp.com/api/wxadmin/upload/one');}; /*格式化时间戳*/_vue.default.filter('formatTime', function (n) {return _tool.default.dateFormat('mm-dd HH:MM', new Date(n * 1000));}); // 由于微信小程序的运行机制问题，需声明如下一行，H5和APP非必填
 var app = new _vue.default(_objectSpread({ store: _store.default }, _App.default)); // http拦截器，将此部分放在new Vue()和app.$mount()之间，才能App.vue中正常使用
 _vue.default.use(_httpInterceptor.default, app); // http接口API抽离，免于写url或者一些固定的参数
 _vue.default.use(_httpApi.default, app);createApp(app).$mount();
@@ -136,7 +143,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
 {
   // 此处globalData为了演示其作用，不是uView框架的一部分
   globalData: {
@@ -151,18 +158,10 @@ __webpack_require__.r(__webpack_exports__);
     /**
      * h5，app-plus(nvue下也为app-plus)，mp-weixin，mp-alipay......
      */
-    console.log(111);
-    var that = this;
-    uni.login({
-      success: function success(res) {
-        that.$u.api.wxAdminLoginByCode({ code: res.code }).then(function (result) {
-          console.log(result);
-        });
-      } });
+
 
 
   } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 /* 8 */

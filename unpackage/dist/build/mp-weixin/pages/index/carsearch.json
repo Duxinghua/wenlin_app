@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "车辆查询",
+  "usingComponents": {
+    "u-search": "/uview-ui/components/u-search/u-search",
+    "u-section": "/uview-ui/components/u-section/u-section",
+    "u-popup": "/uview-ui/components/u-popup/u-popup",
+    "u-message-input": "/uview-ui/components/u-message-input/u-message-input",
+    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom"
+  }
+}

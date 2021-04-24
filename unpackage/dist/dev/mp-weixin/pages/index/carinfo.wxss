@@ -81,6 +81,16 @@
 .carinfo .content .cardes .cdlist .cditem.data-v-e4bb7fc8:nth-last-of-type(1) {
   width: 100%;
 }
+.carinfo .content .cardes .list.data-v-e4bb7fc8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  padding-bottom: 200rpx;
+}
 .carinfo .footer.data-v-e4bb7fc8 {
   width: 100%;
   height: 191rpx;

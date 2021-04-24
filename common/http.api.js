@@ -28,7 +28,7 @@ const install = (Vue, vm) => {
 	//{{localhost}}/api/wxadmin/community_car/illegalstopDetail 发布详情 id
 	let illegalstopDetail = (params = {}) => vm.$u.post('wxadmin/community_car/illegalstopDetail', params);
 	//{{localhost}}/api/wxadmin/community_car/illegalstopList  违停排行榜
-	let illegalstopList = (params = {}) => vm.$u.post('wxadmin/community_car/illegalstopList', params);
+	let illegalstopList = (params = {}) => vm.$u.post('wxadmin/community_car/illegalstopStatistics', params);
 	//{{localhost}}/api/wxadmin/community_car/carDetail 车辆详情
 	let carDetail = (params = {}) => vm.$u.post('wxadmin/community_car/carDetail', params);
 		

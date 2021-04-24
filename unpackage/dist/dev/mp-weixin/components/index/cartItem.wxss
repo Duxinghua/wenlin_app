@@ -1,0 +1,123 @@
+@charset "UTF-8";
+/**
+ * 下方引入的为uView UI的集成样式文件，为scss预处理器，其中包含了一些"u-"开头的自定义变量
+ * 使用的时候，请将下面的一行复制到您的uniapp项目根目录的uni.scss中即可
+ * uView自定义的css类名和scss变量，均以"u-"开头，不会造成冲突，请放心使用 
+ */
+.listitem.data-v-689a562a {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  padding: 35rpx 25rpx;
+  background: white;
+  margin-bottom: 20rpx;
+}
+.listitem .title.data-v-689a562a {
+  font-size: 34rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #020433;
+  margin-bottom: 15rpx;
+}
+.listitem .title .label.data-v-689a562a {
+  color: #FF9C00;
+  margin-right: 20rpx;
+}
+.listitem .imglist.data-v-689a562a {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+  margin-bottom: 34rpx;
+}
+.listitem .imglist .imgitem.data-v-689a562a {
+  width: 226rpx;
+  height: 173rpx;
+  margin-right: 15rpx;
+  -webkit-border-radius: 10rpx;
+          border-radius: 10rpx;
+  position: relative;
+}
+.listitem .imglist .imgitem.data-v-689a562a:nth-of-type(3) {
+  margin-right: 0rpx;
+}
+.listitem .imglist .imgitem.data-v-689a562a:nth-child(1) {
+  -webkit-border-radius: 7rpx 0 0 7rpx;
+          border-radius: 7rpx 0 0 7rpx;
+  overflow: hidden;
+}
+.listitem .imglist .imgitem.data-v-689a562a:nth-child(3n) {
+  -webkit-border-radius: 0rpx 7rpx 7rpx 0;
+          border-radius: 0rpx 7rpx 7rpx 0;
+  margin-right: 0rpx;
+  overflow: hidden;
+}
+.listitem .imglist .imgitem2.data-v-689a562a {
+  width: calc(50% - 5rpx);
+  height: 260rpx;
+  -webkit-border-radius: 7rpx 0 0 7rpx;
+          border-radius: 7rpx 0 0 7rpx;
+  overflow: hidden;
+}
+.listitem .imglist .imgitem2.data-v-689a562a:nth-child(2) {
+  width: calc(50% - 5rpx);
+  margin-left: auto;
+  height: 260rpx;
+  -webkit-border-radius: 0rpx 7rpx 7rpx 0;
+          border-radius: 0rpx 7rpx 7rpx 0;
+  overflow: hidden;
+}
+.listitem .imglist .imgitem3.data-v-689a562a {
+  width: 100%;
+  height: 380rpx;
+  -webkit-border-radius: 7rpx;
+          border-radius: 7rpx;
+  overflow: hidden;
+}
+.listitem .tool.data-v-689a562a {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.listitem .tool .time.data-v-689a562a {
+  font-size: 26rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #95A0B6;
+}
+.listitem .tool .arrow.data-v-689a562a {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  margin-left: auto;
+}
+.listitem .tool .arrow .aritem.data-v-689a562a {
+  width: 8rpx;
+  height: 8rpx;
+  background: #95A0B6;
+  border: 4rpx solid #95A0B6;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  margin-left: 5rpx;
+}
+

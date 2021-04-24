@@ -1,7 +1,7 @@
 <template>
 	<view class="login">
 		<image class="bg" src="../../static/image/bg.png" ></image>
-		<view class="btn">一键登录</view>
+		<button class="btn" plain="true" open-type="getPhoneNumber" @getphonenumber="getPhoneNumber">一键登录</button>
 		<view class="btn ubtn" @click="target">账号登录</view>
 		<view class="info">问邻机构版</view>
 	</view>
@@ -15,9 +15,43 @@
 			}
 		},
 		onLoad() {
-			
+			var that = this
+			uni.login({
+				success: (res) => {
+					that.$u.api.wxAdminLoginByCode({code:res.code}).then((result)=>{
+						uni.setStorageSync('token',result.token)
+						uni.setStorageSync('wxadmin',result.wxadmin)
+						setTimeout(()=>{
+							if(result.token.length > 2){
+								uni.redirectTo({
+									url:'/pages/index/index'
+								})
+							}
+						},500)
+
+					})
+				}
+			})
 		},
 		methods:{
+			getPhoneNumber(e) {
+				var { encryptedData, iv } = e.detail;
+				var that = this
+				uni.login({
+					success: (res) => {
+						var data = {
+							code:res.code,
+							encrypted_data:encryptedData,
+							iv:iv
+						}
+						that.$u.api.wxadminLogin(data).then((result)=>{
+							uni.setStorageSync('token',result.token)
+							uni.setStorageSync('wxadmin',result.wxadmin)
+						})
+					}
+				})
+				
+			},
 			target(){
 				uni.navigateTo({
 					url:'/pages/index/ulogin'
@@ -48,6 +82,10 @@
 			color: #FFFFFF;
 			margin:87rpx auto 29rpx auto;
 			border-radius: 45rpx;
+			border:none
+		}
+		button:after{
+			border:none
 		}
 		.ubtn{
 			background: #EEF2FA;

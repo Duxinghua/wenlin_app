@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import App from './App';
 import {wxUploadFile } from 'common/request';
+import Tool from 'common/tool.js'
 
 
 Vue.config.productionTip = false;
@@ -32,6 +33,12 @@ Vue.mixin(mpShare);
 Vue.prototype.upload = function(params,data){
 	return wxUploadFile(params,data,'https://sq.wenlinapp.com/api/wxadmin/upload/one')
 }
+
+/*格式化时间戳*/
+Vue.filter('formatTime', function(n) {
+	return Tool.dateFormat('mm-dd HH:MM',new Date(n*1000));
+});
+
 
 // 由于微信小程序的运行机制问题，需声明如下一行，H5和APP非必填
 
