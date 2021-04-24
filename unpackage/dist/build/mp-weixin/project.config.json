@@ -6,13 +6,31 @@
 	"setting": {
 		"urlCheck": true,
 		"es6": false,
+		"postcss": true,
+		"preloadBackgroundData": false,
 		"minified": true,
-		"postcss": true
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"useCompilerModule": true,
+		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.14.1",
+	"libVersion": "",
 	"appid": "wx370ab1fa38538af2",
 	"projectname": "wenlin_app",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,

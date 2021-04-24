@@ -36,9 +36,11 @@
 			</view>
 			<view class="cardes">
 				<u-section line-color="#FF9C00" font-size="36" color="#020433" title="违停信息" :arrow="false" :right="false"></u-section>
-				<view class="list">
-					<CartItem v-for="(item,index) in detail.illegal_list" :key="index" :item="item" @selectHandler="selectHandler"/>
-				</view>
+			</view>
+		</view>
+		<view class="content cont2">
+			<view class="list">
+				<CartItem v-for="(item,index) in detail.illegal_list" :key="index" :item="item" @selectHandler="selectHandler"/>
 			</view>
 		</view>
 		<view class="footer">
@@ -130,7 +132,7 @@
 		flex-direction: column;
 		.content{
 			width:100%;
-			min-height: 100vh;
+			// min-height: 100vh;
 			background: #F7F9FF;
 			.header{
 				width:100%;
@@ -176,11 +178,20 @@
 						width:100%;
 					}
 				}
-				.list{
-					display: flex;
-					flex-direction: column;
-					padding-bottom: 200rpx;
-				}
+
+			}
+			.cardes:nth-last-of-type(1){
+				margin-bottom: 0rpx!important;
+				padding-bottom: 0rpx!important;
+			}
+		}
+		.cont2{
+			padding-bottom: 0rpx!important;
+			margin-bottom: 0rpx!important;
+			.list{
+				display: flex;
+				flex-direction: column;
+				padding-bottom: 200rpx;
 			}
 		}
 		.footer{

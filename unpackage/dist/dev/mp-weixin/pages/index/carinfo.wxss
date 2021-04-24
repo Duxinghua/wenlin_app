@@ -15,7 +15,6 @@
 }
 .carinfo .content.data-v-e4bb7fc8 {
   width: 100%;
-  min-height: 100vh;
   background: #F7F9FF;
 }
 .carinfo .content .header.data-v-e4bb7fc8 {
@@ -81,7 +80,15 @@
 .carinfo .content .cardes .cdlist .cditem.data-v-e4bb7fc8:nth-last-of-type(1) {
   width: 100%;
 }
-.carinfo .content .cardes .list.data-v-e4bb7fc8 {
+.carinfo .content .cardes.data-v-e4bb7fc8:nth-last-of-type(1) {
+  margin-bottom: 0rpx !important;
+  padding-bottom: 0rpx !important;
+}
+.carinfo .cont2.data-v-e4bb7fc8 {
+  padding-bottom: 0rpx !important;
+  margin-bottom: 0rpx !important;
+}
+.carinfo .cont2 .list.data-v-e4bb7fc8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;

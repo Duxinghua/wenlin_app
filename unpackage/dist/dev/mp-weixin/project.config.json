@@ -40,7 +40,15 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
+			"current": -1,
+			"list": []
+		},
+		"gamePlugin": {
 			"current": -1,
 			"list": []
 		},
@@ -48,20 +56,29 @@
 			"current": 0,
 			"list": [
 				{
-					"name": "pages/index/login",
-					"query": "uuid=c4bba940-f69e-11ea-a419-6bafda9d095e&__id__=1",
 					"id": 0,
-					"pathName": "pages/index/login"
+					"name": "pages/index/login",
+					"pathName": "pages/index/login",
+					"query": "uuid=c4bba940-f69e-11ea-a419-6bafda9d095e&__id__=1"
 				},
 				{
-					"name": "pages/index/exposure",
 					"id": 1,
-					"pathName": "pages/index/exposure"
+					"name": "pages/index/exposure",
+					"pathName": "pages/index/exposure",
+					"query": ""
 				},
 				{
-					"name": "pages/index/carsearch",
 					"id": 2,
-					"pathName": "pages/index/carsearch"
+					"name": "pages/index/carsearch",
+					"pathName": "pages/index/carsearch",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "pages/index/carinfo",
+					"pathName": "pages/index/carinfo",
+					"query": "id=1",
+					"scene": null
 				}
 			]
 		}
