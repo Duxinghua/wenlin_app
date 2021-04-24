@@ -1,0 +1,72 @@
+@charset "UTF-8";
+/**
+ * 下方引入的为uView UI的集成样式文件，为scss预处理器，其中包含了一些"u-"开头的自定义变量
+ * 使用的时候，请将下面的一行复制到您的uniapp项目根目录的uni.scss中即可
+ * uView自定义的css类名和scss变量，均以"u-"开头，不会造成冲突，请放心使用 
+ */
+.ulogin.data-v-637ba72c {
+  background: white;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  padding: 40rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  height: 100vh;
+}
+.ulogin .logo.data-v-637ba72c {
+  width: 160rpx;
+  height: 223rpx;
+}
+.ulogin .inputitem.data-v-637ba72c {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  height: 120rpx;
+  width: 100%;
+  padding-top: 20rpx;
+  border-bottom: 2rpx solid #F0EDF1;
+}
+.ulogin .inputitem .label.data-v-637ba72c {
+  font-size: 34rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #3C2D2D;
+  width: 120rpx;
+}
+.ulogin .inputitem.data-v-637ba72c:nth-of-type(1) {
+  margin-top: 100rpx;
+}
+.ulogin .submit.data-v-637ba72c {
+  width: 499rpx;
+  height: 97rpx;
+  -webkit-border-radius: 45rpx;
+          border-radius: 45rpx;
+  text-align: center;
+  line-height: 97rpx;
+  margin-top: 220rpx;
+  background: #FF9C00;
+  font-size: 30rpx;
+  font-family: Source Han Sans CN;
+  font-weight: 500;
+  color: #FFFFFF;
+}
+

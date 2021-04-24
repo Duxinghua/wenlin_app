@@ -1,0 +1,122 @@
+@charset "UTF-8";
+/**
+ * 下方引入的为uView UI的集成样式文件，为scss预处理器，其中包含了一些"u-"开头的自定义变量
+ * 使用的时候，请将下面的一行复制到您的uniapp项目根目录的uni.scss中即可
+ * uView自定义的css类名和scss变量，均以"u-"开头，不会造成冲突，请放心使用 
+ */
+.notices.data-v-30a1f5b5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
+.notices .content.data-v-30a1f5b5 {
+  padding: 0 25rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.notices .content.data-v-30a1f5b5 .u-input:nth-last-of-type(1) {
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
+}
+.notices .content .imgwrap.data-v-30a1f5b5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.notices .content .imgwrap .imgitem.data-v-30a1f5b5 {
+  width: 191rpx;
+  height: 153rpx;
+  position: relative;
+  z-index: 1;
+  margin-right: 16rpx;
+  margin-bottom: 16rpx;
+}
+.notices .content .imgwrap .imgitem image.data-v-30a1f5b5 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+}
+.notices .content .imgwrap .imgitem .uploadclose.data-v-30a1f5b5 {
+  position: absolute;
+  left: 151rpx;
+  top: 0;
+  width: 40rpx;
+  z-index: 3;
+  height: 40rpx;
+}
+.notices .content .imgwrap .imgupload.data-v-30a1f5b5 {
+  width: 191rpx;
+  height: 153rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  background: #DEDEDE;
+  -webkit-border-radius: 7rpx;
+          border-radius: 7rpx;
+  position: relative;
+}
+.notices .content .imgwrap .imgupload .imgjia.data-v-30a1f5b5 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.notices .content .pushwrap.data-v-30a1f5b5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  margin-top: 20rpx;
+}
+.notices .content .pushwrap .label.data-v-30a1f5b5 {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #95A0B6;
+  margin-right: auto;
+}
+.notices .content .btns.data-v-30a1f5b5 {
+  width: 654rpx;
+  height: 100rpx;
+  background: #FF9C00;
+  -webkit-border-radius: 12rpx;
+          border-radius: 12rpx;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 38rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #FFFFFF;
+  position: fixed;
+  bottom: 100rpx;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+

@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "违停车辆曝光",
+  "usingComponents": {
+    "u-input": "/uview-ui/components/u-input/u-input",
+    "u-icon": "/uview-ui/components/u-icon/u-icon",
+    "u-select": "/uview-ui/components/u-select/u-select",
+    "u-keyboard": "/uview-ui/components/u-keyboard/u-keyboard",
+    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom"
+  }
+}

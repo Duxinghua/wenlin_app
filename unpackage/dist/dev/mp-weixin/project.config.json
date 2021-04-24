@@ -1,0 +1,51 @@
+{
+  "description": "项目配置文件。",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": true,
+    "es6": false,
+    "minified": true,
+    "postcss": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "",
+  "appid": "wx370ab1fa38538af2",
+  "projectname": "wenlin_app",
+  "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
+    "game": {
+      "current": -1,
+      "list": []
+    },
+    "miniprogram": {
+      "current": 0,
+      "list": [
+        {
+          "name": "pages/index/login",
+          "query": "uuid=c4bba940-f69e-11ea-a419-6bafda9d095e&__id__=1",
+          "id": 0,
+          "pathName": "pages/index/login"
+        },
+        {
+          "name": "pages/index/exposure",
+          "id": 1,
+          "pathName": "pages/index/exposure"
+        },
+        {
+          "name": "pages/index/carsearch",
+          "id": 2,
+          "pathName": "pages/index/carsearch"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "发布报名活动",
+  "usingComponents": {
+    "u-input": "/uview-ui/components/u-input/u-input",
+    "u-icon": "/uview-ui/components/u-icon/u-icon",
+    "u-switch": "/uview-ui/components/u-switch/u-switch",
+    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom"
+  }
+}

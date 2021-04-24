@@ -1,0 +1,1 @@
+<view class="login"><image class="bg" src="../../static/image/bg.png"></image><view class="btn">一键登录</view><view data-event-opts="{{[['tap',[['target',['$event']]]]]}}" class="btn ubtn" bindtap="__e">账号登录</view><view class="info">问邻机构版</view></view>

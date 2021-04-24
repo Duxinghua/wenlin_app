@@ -1,0 +1,111 @@
+{
+	"easycom": {
+		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
+	},
+	"condition": { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [
+			{
+				"name": "pages/index/login", //模式名称
+				"path": "pages/index/login", //启动页面，必选
+				"query": "uuid=c4bba940-f69e-11ea-a419-6bafda9d095e&__id__=1" //启动参数，在页面的onLoad函数里面得到
+			},
+			{
+				"name":"pages/index/exposure",
+				"path":"pages/index/exposure"
+			},
+			{
+				"name":"pages/index/carsearch",
+				"path":"pages/index/carsearch"
+			}
+		]
+	},
+	"pages": [
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首万物业"
+			}
+		},
+		{
+			"path": "pages/index/login",
+			"style": {
+				"navigationBarTitleText": "登录"
+			}
+		},
+		{
+			"path": "pages/index/ulogin",
+			"style": {
+				"navigationBarTitleText": "用户登录"
+			}
+		},
+		{
+			"path": "pages/index/idea",
+			"style": {
+				"navigationBarTitleText": "给问邻提意见"
+			}
+		},
+		{
+			"path": "pages/index/exposure",
+			"style": {
+				"navigationBarTitleText": "违停车辆曝光"
+			}
+		},
+		{
+			"path": "pages/index/carsearch",
+			"style": {
+				"navigationBarTitleText": "车辆查询"
+			}
+		},
+		{
+			"path": "pages/index/carinfo",
+			"style": {
+				"navigationBarTitleText": "车辆查询详情"
+			}
+		},
+		{
+			"path": "pages/index/notices",
+			"style": {
+				"navigationBarTitleText": "发布通知"
+			}
+		},
+		{
+			"path": "pages/index/activity",
+			"style": {
+				"navigationBarTitleText": "发布报名活动"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "问邻机构",
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#FFFFFF",
+		"navigationStyle": "custom"
+	}
+	// "tabBar": {
+	// 	"color": "#909399",
+	// 	"selectedColor": "#303133",
+	// 	"backgroundColor": "#FFFFFF",
+	// 	"borderStyle": "black",
+	// 	"list": [{
+	// 			"pagePath": "pages/example/components",
+	// 			"iconPath": "static/uview/example/component.png",
+	// 			"selectedIconPath": "static/uview/example/component_select.png",
+	// 			"text": "组件"
+	// 		},
+	// 		{
+	// 			"pagePath": "pages/example/js",
+	// 			"iconPath": "static/uview/example/js.png",
+	// 			"selectedIconPath": "static/uview/example/js_select.png",
+	// 			"text": "工具"
+	// 		},
+	// 		{
+	// 			"pagePath": "pages/example/template",
+	// 			"iconPath": "static/uview/example/template.png",
+	// 			"selectedIconPath": "static/uview/example/template_select.png",
+	// 			"text": "模板"
+	// 		}
+	// 	]
+	// }
+}

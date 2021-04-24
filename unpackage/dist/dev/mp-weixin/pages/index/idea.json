@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "给问邻提意见",
+  "usingComponents": {
+    "u-input": "/uview-ui/components/u-input/u-input",
+    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom"
+  }
+}

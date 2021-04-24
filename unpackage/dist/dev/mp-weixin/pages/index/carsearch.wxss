@@ -1,0 +1,184 @@
+@charset "UTF-8";
+/**
+ * 下方引入的为uView UI的集成样式文件，为scss预处理器，其中包含了一些"u-"开头的自定义变量
+ * 使用的时候，请将下面的一行复制到您的uniapp项目根目录的uni.scss中即可
+ * uView自定义的css类名和scss变量，均以"u-"开头，不会造成冲突，请放心使用 
+ */
+.carsearch.data-v-193cd2d4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+}
+.carsearch .content.data-v-193cd2d4 {
+  padding: 25rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.carsearch .content.data-v-193cd2d4 .u-section {
+  margin: 40rpx auto;
+}
+.carsearch .content .list.data-v-193cd2d4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
+.carsearch .content .list .tips.data-v-193cd2d4 {
+  font-size: 36rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #020433;
+  margin-bottom: 20rpx;
+}
+.carsearch .content .list .tips text.data-v-193cd2d4 {
+  color: #ED3269;
+}
+.carsearch .content .list .caritem.data-v-193cd2d4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  height: 99rpx;
+  border-bottom: 2rpx solid #EEF2FA;
+}
+.carsearch .content .list .caritem .no.data-v-193cd2d4 {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #FF9C00;
+  width: 20%;
+}
+.carsearch .content .list .caritem .carno.data-v-193cd2d4 {
+  font-size: 34rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #020433;
+  width: 25%;
+}
+.carsearch .content .list .caritem .cname.data-v-193cd2d4 {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #020433;
+  width: 30%;
+  text-align: center;
+}
+.carsearch .content .list .caritem .ccount.data-v-193cd2d4 {
+  width: 25%;
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #020433;
+  text-align: right;
+}
+.carsearch .content .list .caritem .ccount text.data-v-193cd2d4 {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #FF9C00;
+  padding: 0 10rpx;
+}
+.carsearch .cishow.data-v-193cd2d4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  padding-top: 80rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.carsearch .cishow .title.data-v-193cd2d4 {
+  font-size: 36rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #404B69;
+  margin-bottom: 80rpx;
+}
+.carsearch .cishow .title text.data-v-193cd2d4 {
+  color: #ED3269;
+}
+.carsearch .cishow .btns.data-v-193cd2d4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  margin-top: 80rpx;
+}
+.carsearch .cishow .btns .btn.data-v-193cd2d4 {
+  width: 264rpx;
+  height: 99rpx;
+  -webkit-border-radius: 10rpx;
+          border-radius: 10rpx;
+  font-size: 38rpx;
+  line-height: 99rpx;
+  text-align: center;
+  font-family: PingFang SC;
+  font-weight: bold;
+  margin-left: 15rpx;
+  margin-right: 15rpx;
+}
+.carsearch .cishow .btns .cancen.data-v-193cd2d4 {
+  background: #EEF2FA;
+  color: #404B69;
+}
+.carsearch .cishow .btns .sc.data-v-193cd2d4 {
+  background: #FF9C00;
+  color: #FFFFFF;
+}
+.carsearch .tips.data-v-193cd2d4 {
+  padding-top: 100rpx;
+}
+.carsearch .tips .title.data-v-193cd2d4 {
+  width: 400rpx;
+  text-align: center;
+  margin-bottom: 60rpx;
+}
+.carsearch .tips .btns.data-v-193cd2d4 {
+  margin-top: 40rpx;
+  width: 590rpx;
+  height: 99rpx;
+  background: #FF9C00;
+  -webkit-border-radius: 10rpx;
+          border-radius: 10rpx;
+  line-height: 99rpx;
+  text-align: center;
+  font-size: 38rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+
