@@ -17,6 +17,14 @@
 			{
 				"name":"pages/index/carsearch",
 				"path":"pages/index/carsearch"
+			},
+			{
+				"name":"pages/index/stoplist",
+				"path":"pages/index/stoplist"
+			},
+			{
+				"name":"pages/index/activity",
+				"path":"pages/index/activity"
 			}
 		]
 	},
@@ -55,6 +63,12 @@
 			"path": "pages/index/carsearch",
 			"style": {
 				"navigationBarTitleText": "车辆查询"
+			}
+		},
+		{
+			"path": "pages/index/stoplist",
+			"style": {
+				"navigationBarTitleText": "违停排行榜"
 			}
 		},
 		{

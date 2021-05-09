@@ -5,12 +5,12 @@
 			<view class="header">
 				<view class="hitem" v-for="(item,index) in menu" :key="index" :index="index" @click="go(index)">
 					<image :src="item.image" class="itembg"></image>
-					<view class="label">
+<!-- 					<view class="label">
 						{{item.label}}
 					</view>
 					<view class="des">
 						{{item.des}}
-					</view>
+					</view> -->
 				</view>
 			</view>
 			<view class="navCate">
@@ -87,22 +87,7 @@
 			</view>
 		</u-popup>
 		<!-- 工具 -->
-		<u-popup v-model="toolShow" mode="center" border-radius="20" close-icon-size="40" width="622" height="359" closeable="true">
-			<view class="toolTips">
-				<view class="toolitem">
-					<image src="../../static/image/t1.png" class="icot"></image>
-					<view class="labelt">分享</view>
-				</view>
-				<view class="toolitem">
-					<image src="../../static/image/t2.png" class="icot"></image>
-					<view class="labelt">修改</view>
-				</view>
-				<view class="toolitem">
-					<image src="../../static/image/t3.png" class="icot"></image>
-					<view class="labelt">删除</view>
-				</view>
-			</view>
-		</u-popup>
+
 	</view>
 </template>
 
@@ -131,28 +116,28 @@
 				scrollMaxHeight: 200, //滑动的高度限制，超过这个高度即背景全部显示
 				menu:[
 					{
-						label:'车辆查询',
-						des:'查询、曝光违停',
-						image:'../../static/image/navitem1.png'
+						image:'../../static/image/pushitem1.png'
 					},
 					{
-						label:'发布通知',
-						des:'公告通知推送到 业主微信',
-						image:'../../static/image/navitem2.png'
+						image:'../../static/image/pushitem2.png'
 					},
 					{
-						label:'发布活动',
-						des:'发布普通活动、 报名活动',
-						image:'../../static/image/navitem3.png'
+						image:'../../static/image/pushitem3.png'
 					},
 					{
-						label:'发布其他',
-						des:'发布曝光台、新鲜事 房产、招聘',
-						image:'../../static/image/navitem4.png'
+						image:'../../static/image/pushitem4.png'
+					},
+					{
+						image:'../../static/image/pushitem5.png'
+					},
+					{
+						image:'../../static/image/pushitem6.png'
 					}
 				],
 				navlist:[
-					'我的发布'
+					'车辆违停',
+					'公告',
+					'活动'
 					// '用户留言'
 				],
 				navindex:0,
@@ -200,13 +185,16 @@
 					})
 				}else if(index == 1){
 					uni.navigateTo({
-						url:'/pages/index/notices'
+						url:'/pages/index/stoplist'
 					})
 				}else if(index == 2){
-					this.pushActiveShow = true
-		
+					uni.navigateTo({
+						url:'/pages/index/notices'
+					})
 				}else if(index == 3){
-					this.pushOtherShow  = true
+					uni.navigateTo({
+						url:'/pages/index/activity'
+					})
 				}else if(index == 4){
 					uni.navigateTo({
 						url:'/pages/index/idea'
@@ -268,12 +256,12 @@
 				flex-direction: row;
 				flex-wrap: wrap;
 				.hitem{
-					width:335rpx;
-					height: 169rpx;
-					margin-bottom: 26rpx;
+					width:222rpx;
+					height: 149rpx;
+					margin-bottom: 20rpx;
 					position: relative;
 					z-index: 20;
-					margin-right: auto;
+					margin-right: 21rpx;
 					padding:25rpx;
 					box-sizing: border-box;
 					.itembg{
@@ -300,16 +288,16 @@
 					}
 				}
 				.hitem:after{
-					position: absolute;
-					content:'';
-					left:25rpx;
-					top:78rpx;
-					width: 45rpx;
-					height: 4rpx;
-					border-radius: 2rpx;
-					background: #FFFFFF;
+					// position: absolute;
+					// content:'';
+					// left:25rpx;
+					// top:78rpx;
+					// width: 45rpx;
+					// height: 4rpx;
+					// border-radius: 2rpx;
+					// background: #FFFFFF;
 				}
-				.hitem:nth-child(2n){
+				.hitem:nth-child(3n){
 					margin-right: 0rpx;
 				}
 			}

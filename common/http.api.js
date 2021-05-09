@@ -31,6 +31,10 @@ const install = (Vue, vm) => {
 	let illegalstopList = (params = {}) => vm.$u.post('wxadmin/community_car/illegalstopStatistics', params);
 	//{{localhost}}/api/wxadmin/community_car/carDetail 车辆详情
 	let carDetail = (params = {}) => vm.$u.post('wxadmin/community_car/carDetail', params);
+	//{{online}}/api/wxadmin/community_notices/add 新增公告
+	let noticesAdd = (params = {}) => vm.$u.post('wxadmin/community_notices/add', params);
+	//api/wxadmin/community_activity/add 新增机构活动
+	let communityActivityAdd = (params = {}) => vm.$u.post('wxadmin/community_activity/add', params);
 		
 	// 将各个定义的接口名称，统一放进对象挂载到vm.$u.api(因为vm就是this，也即this.$u.api)下
 	vm.$u.api = {
@@ -43,7 +47,9 @@ const install = (Vue, vm) => {
 		getIllegalstopPublish,
 		illegalstopList,
 		illegalstopDetail,
-		carDetail
+		carDetail,
+		noticesAdd,
+		communityActivityAdd
 	};
 }
 

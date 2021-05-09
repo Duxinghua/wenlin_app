@@ -154,7 +154,7 @@
   color: #FFFFFF;
 }
 .carsearch .tips.data-v-193cd2d4 {
-  padding-top: 100rpx;
+  padding-top: 20rpx;
 }
 .carsearch .tips .title.data-v-193cd2d4 {
   width: 400rpx;

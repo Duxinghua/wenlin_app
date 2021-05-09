@@ -19,7 +19,7 @@
 			</view>
 			<view class="pushwrap" @click="pushSelect">
 				<view class="label">发布到</view>
-				<u-input  @click.stop="pushSelect" v-model="community_title"  input-align="right" type="text"  disabled="true" :border="false" placeholder="请选择小区" />
+				<u-input  @click="pushSelect" v-model="community_title"  input-align="right" type="text"  disabled="true" :border="false" placeholder="请选择小区" />
 				<u-icon  color="#95A0B6" name="arrow-right"></u-icon>
 			</view>
 			<view class="btns" @click="submit">
@@ -59,12 +59,23 @@
 				content:'',
 				cshow:false,
 				clist:[],
-				community_id:'',
-				community_title:''
+				id:''
+				// community_id:'',
+				// community_title:''
+			}
+		},
+		onLoad(options) {
+			if(options.id){
+				this.id = options.id
+				this.$u.api.illegalstopDetail({id:this.id}).then((result)=>{
+					console.log(result)
+				})
 			}
 		},
 		onShow(){
-			this.getComList()
+			if(!this.id){
+				this.getComList()
+			}
 		},
 		methods:{
 			submit(){
@@ -96,18 +107,18 @@
 					})
 				})
 			},
-			confirmHandler(e){
-				this.community_id = e[0].value
-				this.community_title = e[0].label
-			},
+			// confirmHandler(e){
+			// 	this.community_id = e[0].value
+			// 	this.community_title = e[0].label
+			// },
 			pushSelect(){
 				this.cshow = true
 			},
-			getComList(){
-				this.$u.api.adminCommunity({}).then((result)=>{
-					this.clist = result
-				})
-			},
+			// getComList(){
+			// 	this.$u.api.adminCommunity({}).then((result)=>{
+			// 		this.clist = result
+			// 	})
+			// },
 			carHandler(){
 				this.carshow = true
 			},

@@ -1,6 +1,6 @@
 <template>
 	<view class="listitem">
-		<view class="title">
+		<view class="title" v-if="item.content">
 			<text class="label" v-if="false">
 				#物业通知
 			</text>
@@ -11,7 +11,7 @@
 				<u-image :src="sitem" :height="autoHeight(item.images.length)" mode="aspectFill"></u-image>
 			</view>
 		</view>
-		<view class="tool" @click="selectHandler(item)">
+		<view class="tool" @click="selectHandler">
 			<view class="time">
 				{{item.create_time | formatTime}}
 			</view>
@@ -19,6 +19,23 @@
 				<view class="aritem" v-for="(item,index) in 3" :index="index" :key="index"></view>
 			</view>
 		</view>
+		
+		<u-popup v-model="toolShow" mode="center" border-radius="20" close-icon-size="40" width="622" height="359" closeable="true">
+			<view class="toolTips">
+				<view class="toolitem" v-if="false">
+					<image src="../../static/image/t1.png" class="icot"></image>
+					<view class="labelt">分享</view>
+				</view>
+				<view class="toolitem" @click="edit">
+					<image src="../../static/image/t2.png" class="icot"></image>
+					<view class="labelt">修改</view>
+				</view>
+				<view class="toolitem" @click="del">
+					<image src="../../static/image/t3.png" class="icot"></image>
+					<view class="labelt">删除</view>
+				</view>
+			</view>
+		</u-popup>
 	</view>
 </template>
 
@@ -31,7 +48,7 @@
 		},
 		data() {
 			return {
-				
+				toolShow:false
 			};
 		},
 		methods:{
@@ -44,8 +61,13 @@
 					return 173
 				}
 			},
-			selectHandler(item){
-				this.$emit('selectHandler',item)
+			selectHandler(){
+				this.toolShow = true
+			},
+			edit(){
+				uni.navigateTo({
+					url:'/pages/index/exposure?id='+this.item.id
+				})
 			}
 		}
 	}
@@ -134,6 +156,31 @@
 					border: 4rpx solid #95A0B6;
 					border-radius: 50%;
 					margin-left:5rpx;
+				}
+			}
+		}
+		.toolTips{
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			height: 100%;
+			.toolitem{
+				width: 33.33%;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				height: 100%;
+				.icot{
+					width:82rpx;
+					height:82rpx;
+					margin-bottom: 28rpx;
+				}
+				.labelt{
+					font-size: 30rpx;
+					font-family: PingFang SC;
+					font-weight: 500;
+					color: #020433;
 				}
 			}
 		}

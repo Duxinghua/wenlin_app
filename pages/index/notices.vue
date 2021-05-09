@@ -3,7 +3,7 @@
 		<navigation-custom :config="config" :scrollTop="scrollTop" @customConduct="customConduct" :scrollMaxHeight="scrollMaxHeight" />
 		<view class="content">
 			<u-input v-model="title" type="text" height="85"  :border="true" placeholder="请输入标题内容" />
-			<u-input v-model="content" height="229" type="textarea" :border="true"  placeholder="请输入正文文内容"/>
+			<u-input v-model="content" maxlength="10000" height="229" type="textarea" :border="true"  placeholder="请输入正文文内容"/>
 			<view class="imgwrap">
 				<view class="imgitem"  v-for="(item,index) in uploadList" :key="index"  v-if="uploadList.length">
 					<image src="../../static/image/imguploaddel.png" class="uploadclose" @click="uploadDel(index)" />
@@ -14,15 +14,16 @@
 					<image src="../../static/image/uploadico.png" class="imgjia"></image>
 				</view>
 			</view>
-			<view class="pushwrap">
+			<view class="pushwrap" @click="cshow = true">
 				<view class="label">发布到</view>
-				<u-input v-model="pushname"  input-align="right" type="text"  disabled="true" :border="false" placeholder="请选择小区" />
+				<u-input @click="cshow = true" disabled="true" v-model="community_title"  input-align="right" type="text"  :border="false" placeholder="请选择小区" />
 				<u-icon  color="#95A0B6" name="arrow-right"></u-icon>
 			</view>
-			<view class="btns">
+			<view class="btns" @click="pushTodo">
 				提交
 			</view>
 		</view>
+		<u-select v-model="cshow" :list="clist" label-name="title" value-name="community_id" @confirm="confirmHandler"></u-select>
 	</view>
 </template>
 
@@ -47,36 +48,52 @@
 				},
 				scrollTop: 0, // 当linear为true的时候需要通过onpagescroll传递参数
 				scrollMaxHeight: 200, //滑动的高度限制，超过这个高度即背景全部显示
-				uploadList:[]
+				title:'',
+				content:'',
+				clist:[],
+				cshow:false
+				
 			}
 		},
+		onShow(){
+			this.getComList()
+		},
 		methods:{
-			//图片处理
-			uploadDel(e){
-				this.uploadList.splice(e,1)
-			},
-			//上传图片处理
-			chooseImage(){
-				var that = this
-				uni.chooseImage({
-						count: 9 - this.uploadList.length, // 默认9
-						sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-						sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-						success: function(res) {
-							// 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
-							// goods.localIds = res.localIds
-							// _this.asyncUploadImage(goodsindex)
-							var s = res.tempFilePaths
-							s.map((item)=>{
-								that.Api.uploadOne(item).then((result)=>{
-									if(result.code == 1){
-										console.log(result.data)
-										that.uploadList.push(result.data)
-									}
-								})
-							})
-						}
+			//发布处理 
+			pushTodo(){
+				var  data = {}
+				if(!this.title.length){
+					return this.$u.toast('请输入标题')
+				}else{
+					data.title = this.title
+				}
+				if(!this.content.length){
+					return this.$u.toast('请输入内容')
+				}else{
+					data.content = this.content
+				}
+				if(!this.uploadList.length){
+					return this.$u.toast('至少上传一张图片')
+				}else{
+					var list = []
+					this.uploadList.map((item)=>{
+						list.push(item.url)
 					})
+					data.images = list.join(',')
+				}
+				if(!this.community_title.length){
+					return this.$u.toast('请选择发布到那个机构')
+				}else{
+					data.community_id = this.community_id
+				}
+				this.$u.api.noticesAdd(data).then((result)=>{
+						this.$u.toast('发布成功')
+						setTimeout(()=>{
+							uni.navigateBack({
+								delta:1
+							})
+						},300)
+				})
 			}
 		}
 	}

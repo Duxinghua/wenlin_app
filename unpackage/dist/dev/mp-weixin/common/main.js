@@ -68,7 +68,7 @@ _vue.default.use(_uviewUi.default); // 此处为演示vuex使用，非uView的�
 // 引入uView提供的对vuex的简写法文件
 var vuexStore = __webpack_require__(/*! @/store/$u.mixin.js */ 46);_vue.default.mixin(vuexStore); // 引入uView对小程序分享的mixin封装
 var mpShare = __webpack_require__(/*! uview-ui/libs/mixin/mpShare.js */ 47);_vue.default.mixin(mpShare); //公共处理方法
-var VueMixin = __webpack_require__(/*! @/mixin/mixin.js */ 259);_vue.default.mixin(VueMixin);_vue.default.prototype.upload = function (params, data) {return (0, _request.wxUploadFile)(params, data, 'https://sq.wenlinapp.com/api/wxadmin/upload/one');}; /*格式化时间戳*/_vue.default.filter('formatTime', function (n) {return _tool.default.dateFormat('mm-dd HH:MM', new Date(n * 1000));}); // 由于微信小程序的运行机制问题，需声明如下一行，H5和APP非必填
+var VueMixin = __webpack_require__(/*! @/mixin/mixin.js */ 48);_vue.default.mixin(VueMixin);_vue.default.prototype.upload = function (params, data) {return (0, _request.wxUploadFile)(params, data, 'https://sq.wenlinapp.com/api/wxadmin/upload/one');}; /*格式化时间戳*/_vue.default.filter('formatTime', function (n) {return _tool.default.dateFormat('mm-dd HH:MM', new Date(n * 1000));}); // 由于微信小程序的运行机制问题，需声明如下一行，H5和APP非必填
 var app = new _vue.default(_objectSpread({ store: _store.default }, _App.default)); // http拦截器，将此部分放在new Vue()和app.$mount()之间，才能App.vue中正常使用
 _vue.default.use(_httpInterceptor.default, app); // http接口API抽离，免于写url或者一些固定的参数
 _vue.default.use(_httpApi.default, app);createApp(app).$mount();

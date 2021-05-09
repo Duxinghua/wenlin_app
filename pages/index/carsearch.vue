@@ -3,7 +3,6 @@
 		<navigation-custom :config="config" :scrollTop="scrollTop" @customConduct="customConduct" :scrollMaxHeight="scrollMaxHeight" />
 		<view class="content">
 			<u-search  placeholder="请输入车牌号后三位" height="80" v-model="car_num" clearabled="true" disabled="true" @click="openInput" @clear="clearHandler" show-action="false"></u-search>
-			<u-section v-if="!searchFlag" line-color="#FF9C00" font-size="36" color="#020433" title="违停排行榜" :arrow="false" :right="false"></u-section>
 			<view class="list">
 				<view class="tips" v-if="searchFlag">
 					尾号为<text>{{car_num}}</text>的车辆有：
@@ -73,7 +72,10 @@
 			}
 		},
 		onLoad() {
-			this.getListTop()
+		
+		},
+		onShow() {
+			this.carInputShow = true
 		},
 		methods:{
 			cartHandler(item){
@@ -283,7 +285,7 @@
 			}
 		}
 		.tips{
-			padding-top:100rpx;
+			padding-top:20rpx;
 			.title{
 				width: 400rpx;
 				text-align: center;

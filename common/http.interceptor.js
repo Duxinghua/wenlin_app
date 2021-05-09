@@ -20,6 +20,9 @@ const install = (Vue, vm) => {
 		config.header['XX-Token'] = uni.getStorageSync('token')
 		config.header['XX-Wxapp-AppId'] = wx.appid
 		config.header['XX-Device-Type'] = 'wxapp'
+		// if(config.method == 'POST'){
+		// 	config.header['Content-Type'] = 'multipart/form-data'
+		// }
 		
 		// 方式一，存放在vuex的token，假设使用了uView封装的vuex方式，见：https://uviewui.com/components/globalVariable.html
 		// config.header.token = vm.token;
