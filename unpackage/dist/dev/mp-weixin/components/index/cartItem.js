@@ -79,6 +79,9 @@ __webpack_require__.r(__webpack_exports__);
 var components
 try {
   components = {
+    uParse: function() {
+      return Promise.all(/*! import() | uview-ui/components/u-parse/u-parse */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uview-ui/components/u-parse/u-parse")]).then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-parse/u-parse.vue */ 269))
+    },
     uImage: function() {
       return __webpack_require__.e(/*! import() | uview-ui/components/u-image/u-image */ "uview-ui/components/u-image/u-image").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-image/u-image.vue */ 214))
     },
@@ -204,11 +207,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var _default =
 {
   props: {
     item: {
-      type: Object } },
+      type: Object },
+
+    navindex: {
+      type: [Number, String],
+      default: 0 } },
 
 
   data: function data() {
@@ -230,9 +238,29 @@ var _default =
       this.toolShow = true;
     },
     edit: function edit() {
-      uni.navigateTo({
-        url: '/pages/index/exposure?id=' + this.item.id });
+      this.toolShow = false;
+      if (this.navindex == 0) {
+        uni.navigateTo({
+          url: '/pages/index/exposure?id=' + this.item.id });
 
+      } else if (this.navindex == 1) {
+        uni.navigateTo({
+          url: '/pages/index/notices?id=' + this.item.id });
+
+      } else if (this.navindex == 2) {
+        uni.navigateTo({
+          url: '/pages/index/activity?id=' + this.item.id });
+
+      }
+    },
+    detailHandler: function detailHandler() {
+      // uni.navigateTo({
+      // 	url:'/pages/index/carinfo?id='+this.item.id
+      // })
+    },
+    del: function del() {
+      this.toolShow = false;
+      this.$emit('del', this.item.id);
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

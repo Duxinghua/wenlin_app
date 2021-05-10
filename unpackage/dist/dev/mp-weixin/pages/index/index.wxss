@@ -38,7 +38,7 @@
           flex-wrap: wrap;
 }
 .index .content .header .hitem.data-v-57280228 {
-  width: 222rpx;
+  width: calc(50% - (21rpx/2));
   height: 149rpx;
   margin-bottom: 20rpx;
   position: relative;
@@ -70,7 +70,7 @@
   color: #FFFFFF;
   width: 180rpx;
 }
-.index .content .header .hitem.data-v-57280228:nth-child(3n) {
+.index .content .header .hitem.data-v-57280228:nth-child(2n) {
   margin-right: 0rpx;
 }
 .index .content .navCate.data-v-57280228 {

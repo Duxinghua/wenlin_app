@@ -6,6 +6,7 @@
     "pages/index/idea",
     "pages/index/exposure",
     "pages/index/carsearch",
+    "pages/index/stoplist",
     "pages/index/carinfo",
     "pages/index/notices",
     "pages/index/activity"

@@ -260,7 +260,7 @@ __webpack_require__.r(__webpack_exports__);
         title: '首万物业', //title
         bgcolor: 'white', //背景颜色
         fontcolor: 'rgba(51, 51, 51, 1)', //文字颜色，默认白色
-        type: 1, //type 1，3胶囊 2，4无胶囊模式
+        type: 4, //type 1，3胶囊 2，4无胶囊模式
         transparent: false, //是否背景透明 默认白色
         linear: false, //是为开启下滑渐变
         share: false //是否将主页按钮显示为分享按钮
@@ -280,15 +280,15 @@ __webpack_require__.r(__webpack_exports__);
         image: '../../static/image/pushitem3.png' },
 
       {
-        image: '../../static/image/pushitem4.png' },
+        image: '../../static/image/pushitem4.png' }
 
-      {
-        image: '../../static/image/pushitem5.png' },
-
-      {
-        image: '../../static/image/pushitem6.png' }],
-
-
+      // {
+      // 	image:'../../static/image/pushitem5.png'
+      // },
+      // {
+      // 	image:'../../static/image/pushitem6.png'
+      // }
+      ],
       navlist: [
       '车辆违停',
       '公告',
@@ -366,24 +366,81 @@ __webpack_require__.r(__webpack_exports__);
     },
     navHandler: function navHandler(index) {
       this.navindex = index;
+      this.total = 0;
+      this.page = 1;
+      this.list = [];
+      this.getList();
     },
     getList: function getList(ismore) {var _this2 = this;
       var data = {
         page: this.page,
         page_size: this.page_size };
 
-      this.$u.api.getIllegalstopPublish(data).then(function (result) {
-        _this2.total = result.total;
-        if (ismore) {
-          _this2.list = _this2.list.concat(result.list);
-        } else {
-          _this2.list = result.list;
-        }
-      });
+      if (this.navindex == 0) {
+        this.$u.api.getIllegalstopPublish(data).then(function (result) {
+          _this2.total = result.total;
+          if (ismore) {
+            _this2.list = _this2.list.concat(result.list);
+          } else {
+            _this2.list = result.list;
+          }
+        });
+      } else if (this.navindex == 1) {
+        this.$u.api.noticesgetList(data).then(function (result) {
+          _this2.total = result.total;
+          if (ismore) {
+            _this2.list = _this2.list.concat(result.list);
+          } else {
+            _this2.list = result.list;
+          }
+        });
+      } else if (this.navindex == 2) {
+        this.$u.api.communityactivityGetList(data).then(function (result) {
+          _this2.total = result.total;
+          if (ismore) {
+            _this2.list = _this2.list.concat(result.list);
+          } else {
+            _this2.list = result.list;
+          }
+        });
+      }
     },
     selectHandler: function selectHandler(item) {
       this.selectObject = item;
       this.toolShow = true;
+    },
+    delHandler: function delHandler(id) {var _this3 = this;
+      if (this.navindex == 0) {
+        this.$u.api.illegalstopDelete({ id: id }).then(function (result) {
+          _this3.$u.toast('删除成功');
+          setTimeout(function () {
+            _this3.total = 0;
+            _this3.page = 1;
+            _this3.list = [];
+            _this3.getList();
+          });
+        });
+      } else if (this.navindex == 1) {
+        this.$u.api.noticesdelete({ id: id }).then(function (result) {
+          _this3.$u.toast('删除成功');
+          setTimeout(function () {
+            _this3.total = 0;
+            _this3.page = 1;
+            _this3.list = [];
+            _this3.getList();
+          });
+        });
+      } else if (this.navindex == 2) {
+        this.$u.api.communityactivitydelete({ id: id }).then(function (result) {
+          _this3.$u.toast('删除成功');
+          setTimeout(function () {
+            _this3.total = 0;
+            _this3.page = 1;
+            _this3.list = [];
+            _this3.getList();
+          });
+        });
+      }
     } },
 
   onReachBottom: function onReachBottom() {

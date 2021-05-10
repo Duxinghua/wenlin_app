@@ -7,9 +7,10 @@ module.exports = {
 		}
 	},
 	methods:{
-		getComList(){
+		getComList(cb){
 			this.$u.api.adminCommunity({}).then((result)=>{
 				this.clist = result
+				cb()
 			})
 		},
 		checkToken(cb){

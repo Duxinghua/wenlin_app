@@ -324,12 +324,12 @@ __webpack_require__.r(__webpack_exports__);
       content: '',
       title: '',
       cshow: '',
-      clist: [] };
-
+      clist: [],
+      id: 0 };
 
   },
   onShow: function onShow() {
-    this.getComList();
+    this.getComList(function () {});
   },
   methods: {
     modularHandler: function modularHandler(e) {

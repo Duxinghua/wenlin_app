@@ -142,12 +142,12 @@
 				content:'',
 				title:'',
 				cshow:'',
-				clist:[]
-				
+				clist:[],
+				id:0
 			}
 		},
 		onShow(){
-			this.getComList()
+			this.getComList(()=>{})
 		},
 		methods:{
 			modularHandler(e){

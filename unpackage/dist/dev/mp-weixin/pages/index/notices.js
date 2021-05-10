@@ -221,16 +221,49 @@ __webpack_require__.r(__webpack_exports__);
       title: '',
       content: '',
       clist: [],
-      cshow: false };
+      cshow: false,
+      id: 0,
+      btntext: '提交' };
 
 
   },
+  onLoad: function onLoad(options) {var _this = this;
+    if (options.id) {
+      this.id = options.id;
+      this.btntext = '修改';
+      this.$u.api.noticesdetail({ id: this.id }).then(function (result) {var
+        title = result.title,content = result.content,images = result.images,community_id = result.community_id;
+        var list = [];
+        images.map(function (item) {
+          list.push({
+            http_url: item,
+            url: item.replace(/https\:\/\/sq.wenlinapp.com\/upload\//, '') });
+
+        });
+        _this.uploadList = list;
+        _this.title = title;
+        _this.content = content;
+        _this.getComList(function () {
+          _this.clist.map(function (item) {
+            if (item.community_id == community_id) {
+              _this.community_id = community_id;
+              _this.community_title = item.title;
+            }
+          });
+        });
+      });
+    } else {
+      this.btntext = '提交';
+    }
+  },
   onShow: function onShow() {
-    this.getComList();
+    if (!this.id) {
+      this.getComList(function () {});
+    }
   },
   methods: {
     //发布处理 
-    pushTodo: function pushTodo() {var _this = this;
+    pushTodo: function pushTodo() {var _this2 = this;
       var data = {};
       if (!this.title.length) {
         return this.$u.toast('请输入标题');
@@ -256,14 +289,27 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         data.community_id = this.community_id;
       }
-      this.$u.api.noticesAdd(data).then(function (result) {
-        _this.$u.toast('发布成功');
-        setTimeout(function () {
-          uni.navigateBack({
-            delta: 1 });
+      if (this.id) {
+        data.id = this.id;
+        this.$u.api.noticesedit(data).then(function (result) {
+          _this2.$u.toast('修改成功');
+          setTimeout(function () {
+            uni.navigateBack({
+              delta: 1 });
 
-        }, 300);
-      });
+          }, 300);
+        });
+
+      } else {
+        this.$u.api.noticesAdd(data).then(function (result) {
+          _this2.$u.toast('发布成功');
+          setTimeout(function () {
+            uni.navigateBack({
+              delta: 1 });
+
+          }, 300);
+        });
+      }
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

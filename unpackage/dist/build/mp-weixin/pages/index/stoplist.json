@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "违停排行榜",
+  "usingComponents": {
+    "u-section": "/uview-ui/components/u-section/u-section",
+    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom"
+  }
+}

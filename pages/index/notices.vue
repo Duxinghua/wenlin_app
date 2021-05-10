@@ -20,7 +20,7 @@
 				<u-icon  color="#95A0B6" name="arrow-right"></u-icon>
 			</view>
 			<view class="btns" @click="pushTodo">
-				提交
+				{{btntext}}
 			</view>
 		</view>
 		<u-select v-model="cshow" :list="clist" label-name="title" value-name="community_id" @confirm="confirmHandler"></u-select>
@@ -51,12 +51,45 @@
 				title:'',
 				content:'',
 				clist:[],
-				cshow:false
+				cshow:false,
+				id:0,
+				btntext:'提交'
 				
 			}
 		},
+		onLoad(options) {
+			if(options.id){
+				this.id = options.id
+				this.btntext = '修改'
+				this.$u.api.noticesdetail({id:this.id}).then((result)=>{
+						var {title,content,images,community_id} = result
+						var list = []
+						images.map((item)=>{
+							list.push({
+								http_url:item,
+								url:item.replace(/https\:\/\/sq.wenlinapp.com\/upload\//,'')
+							})
+						})
+						this.uploadList = list
+						this.title = title
+						this.content = content
+						this.getComList(()=>{
+							this.clist.map((item)=>{
+								if(item.community_id == community_id){
+									this.community_id = community_id
+									this.community_title = item.title
+								}
+							})
+						})
+				})
+			}else{
+				this.btntext = '提交'
+			}
+		},
 		onShow(){
-			this.getComList()
+			if(!this.id){
+				this.getComList(()=>{})
+			}
 		},
 		methods:{
 			//发布处理 
@@ -86,14 +119,27 @@
 				}else{
 					data.community_id = this.community_id
 				}
-				this.$u.api.noticesAdd(data).then((result)=>{
-						this.$u.toast('发布成功')
-						setTimeout(()=>{
-							uni.navigateBack({
-								delta:1
-							})
-						},300)
-				})
+				if(this.id){
+					data.id = this.id
+					this.$u.api.noticesedit(data).then((result)=>{
+								this.$u.toast('修改成功')
+								setTimeout(()=>{
+									uni.navigateBack({
+										delta:1
+									})
+								},300)
+						})
+					
+				}else{
+					this.$u.api.noticesAdd(data).then((result)=>{
+							this.$u.toast('发布成功')
+							setTimeout(()=>{
+								uni.navigateBack({
+									delta:1
+								})
+							},300)
+					})
+				}
 			}
 		}
 	}

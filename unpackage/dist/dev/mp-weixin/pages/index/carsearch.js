@@ -229,7 +229,7 @@ __webpack_require__.r(__webpack_exports__);
       carInputShow: false,
       nocarShow: false,
       cartlist: [],
-      searchFlag: false };
+      searchFlag: true };
 
   },
   onLoad: function onLoad() {
@@ -284,7 +284,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     clearHandler: function clearHandler() {
-      this.searchFlag = false,
+      this.searchFlag = true,
       this.page = 1;
       this.total = 0;
       this.getListTop();
@@ -303,11 +303,12 @@ __webpack_require__.r(__webpack_exports__);
     },
     csearchHandler: function csearchHandler() {
       this.carInputShow = false;
-      this.searchFlag = false;
+      this.searchFlag = true;
       this.page = 1;
       this.total = 0;
       this.car_num = '';
-      this.getListTop();
+      this.cartlist = [];
+      // this.getListTop()
     },
     openInput: function openInput() {
       this.carInputShow = true;

@@ -68,7 +68,7 @@
 				carInputShow:false,
 				nocarShow:false,
 				cartlist:[],
-				searchFlag:false
+				searchFlag:true
 			}
 		},
 		onLoad() {
@@ -123,7 +123,7 @@
 				}
 			},
 			clearHandler(){
-				this.searchFlag = false,
+				this.searchFlag = true,
 				this.page = 1
 				this.total = 0
 				this.getListTop()
@@ -142,11 +142,12 @@
 			},
 			csearchHandler(){
 				this.carInputShow = false;
-				this.searchFlag = false;
+				this.searchFlag = true;
 				this.page = 1
 				this.total = 0
 				this.car_num = ''
-				this.getListTop()
+				this.cartlist = []
+				// this.getListTop()
 			},
 			openInput(){
 				this.carInputShow = true

@@ -223,26 +223,48 @@ __webpack_require__.r(__webpack_exports__);
       content: '',
       cshow: false,
       clist: [],
-      id: ''
+      id: '',
+      btn_text: '提交'
       // community_id:'',
       // community_title:''
     };
   },
-  onLoad: function onLoad(options) {
+  onLoad: function onLoad(options) {var _this = this;
     if (options.id) {
+      this.btn_text = '修改';
       this.id = options.id;
-      this.$u.api.illegalstopDetail({ id: this.id }).then(function (result) {
-        console.log(result);
+      this.$u.api.illegalstopDetail({ id: this.id }).then(function (result) {var
+        car_num = result.car_num,content = result.content,images = result.images,community_id = result.community_id;
+        var list = [];
+        images.map(function (item) {
+          list.push({
+            http_url: item,
+            url: item.replace(/https\:\/\/sq.wenlinapp.com\/upload\//, '') });
+
+        });
+        _this.uploadList = list;
+        _this.car_num = car_num;
+        _this.content = content;
+        _this.getComList(function () {
+          _this.clist.map(function (item) {
+            if (item.community_id == community_id) {
+              _this.community_id = community_id;
+              _this.community_title = item.title;
+            }
+          });
+        });
       });
+    } else {
+      this.btn_text = '提交';
     }
   },
   onShow: function onShow() {
     if (!this.id) {
-      this.getComList();
+      this.getComList(function () {});
     }
   },
   methods: {
-    submit: function submit() {var _this = this;
+    submit: function submit() {var _this2 = this;
       var data = {};
       if (this.car_num.length < 3) {
         return this.$u.toast('请输入车牌号');
@@ -264,12 +286,22 @@ __webpack_require__.r(__webpack_exports__);
         data.images = list.toString();
       }
       data.content = this.content;
-      this.$u.api.publishIllegalstop(data).then(function (result) {
-        _this.$u.toast('发布成功');
-        uni.navigateBack({
-          delta: 1 });
+      if (this.id) {
+        data.id = this.id;
+        this.$u.api.editIllegalstop(data).then(function (result) {
+          _this2.$u.toast('修改成功');
+          uni.navigateBack({
+            delta: 1 });
 
-      });
+        });
+      } else {
+        this.$u.api.publishIllegalstop(data).then(function (result) {
+          _this2.$u.toast('发布成功');
+          uni.navigateBack({
+            delta: 1 });
+
+        });
+      }
     },
     // confirmHandler(e){
     // 	this.community_id = e[0].value

@@ -40,9 +40,9 @@
 						</view>
 					</view>
 				</view> -->
-				<CartItem v-for="(item,index) in list" :key="index" :item="item" @selectHandler="selectHandler"/>
+				<CartItem v-for="(item,index) in list" :navindex="navindex" :key="index" :item="item" @selectHandler="selectHandler" @del="delHandler"/>
 			</view>
-			<image src="../../static/image/idea.png" class="idea" @click="go(4)"></image>
+			<image src="../../static/image/idea.png" class="idea" @click="go(4)" v-if="false"></image>
 		</view>
 		<!-- 发布活动 -->
 		<u-popup v-model="pushActiveShow" mode="center" border-radius="20" close-icon-size="40" width="622" height="458" closeable="true">
@@ -105,7 +105,7 @@
 					title: '首万物业', //title
 					bgcolor: 'white', //背景颜色
 					fontcolor: 'rgba(51, 51, 51, 1)', //文字颜色，默认白色
-					type: 1, //type 1，3胶囊 2，4无胶囊模式
+					type: 4, //type 1，3胶囊 2，4无胶囊模式
 					transparent: false, //是否背景透明 默认白色
 					linear: false, //是为开启下滑渐变
 					share: false //是否将主页按钮显示为分享按钮
@@ -127,12 +127,12 @@
 					{
 						image:'../../static/image/pushitem4.png'
 					},
-					{
-						image:'../../static/image/pushitem5.png'
-					},
-					{
-						image:'../../static/image/pushitem6.png'
-					}
+					// {
+					// 	image:'../../static/image/pushitem5.png'
+					// },
+					// {
+					// 	image:'../../static/image/pushitem6.png'
+					// }
 				],
 				navlist:[
 					'车辆违停',
@@ -211,24 +211,81 @@
 			},
 			navHandler(index){
 				this.navindex = index
+				this.total = 0
+				this.page = 1
+				this.list = []
+				this.getList()
 			},
 			getList(ismore){
 				var data = {
 					page:this.page,
 					page_size:this.page_size
 				}
-				this.$u.api.getIllegalstopPublish(data).then((result)=>{
-					this.total = result.total
-					if(ismore){
-						this.list = this.list.concat(result.list)
-					}else{
-						this.list = result.list
-					}
-				})
+				if(this.navindex == 0){
+					this.$u.api.getIllegalstopPublish(data).then((result)=>{
+						this.total = result.total
+						if(ismore){
+							this.list = this.list.concat(result.list)
+						}else{
+							this.list = result.list
+						}
+					})
+				}else if(this.navindex == 1){
+					this.$u.api.noticesgetList(data).then((result)=>{
+						this.total = result.total
+						if(ismore){
+							this.list = this.list.concat(result.list)
+						}else{
+							this.list = result.list
+						}
+					})
+				}else if(this.navindex == 2){
+					this.$u.api.communityactivityGetList(data).then((result)=>{
+						this.total = result.total
+						if(ismore){
+							this.list = this.list.concat(result.list)
+						}else{
+							this.list = result.list
+						}
+					})
+				}
 			},
 			selectHandler(item){
 				this.selectObject = item
 				this.toolShow = true
+			},
+			delHandler(id){
+				if(this.navindex == 0){
+					this.$u.api.illegalstopDelete({id:id}).then((result)=>{
+						this.$u.toast('删除成功')
+						setTimeout(()=>{
+							this.total = 0
+							this.page = 1
+							this.list = []
+							this.getList()
+						})
+					})
+				}else if(this.navindex == 1){
+					this.$u.api.noticesdelete({id:id}).then((result)=>{
+						this.$u.toast('删除成功')
+						setTimeout(()=>{
+							this.total = 0
+							this.page = 1
+							this.list = []
+							this.getList()
+						})
+					})
+				}else if(this.navindex == 2){
+					this.$u.api.communityactivitydelete({id:id}).then((result)=>{
+						this.$u.toast('删除成功')
+						setTimeout(()=>{
+							this.total = 0
+							this.page = 1
+							this.list = []
+							this.getList()
+						})
+					})
+				}
 			}
 		},
 		onReachBottom() {
@@ -256,7 +313,8 @@
 				flex-direction: row;
 				flex-wrap: wrap;
 				.hitem{
-					width:222rpx;
+					// width:222rpx;
+					width:calc(50% - (21rpx/2));
 					height: 149rpx;
 					margin-bottom: 20rpx;
 					position: relative;
@@ -297,7 +355,7 @@
 					// border-radius: 2rpx;
 					// background: #FFFFFF;
 				}
-				.hitem:nth-child(3n){
+				.hitem:nth-child(2n){
 					margin-right: 0rpx;
 				}
 			}

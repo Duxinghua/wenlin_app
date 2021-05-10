@@ -23,7 +23,7 @@
 				<u-icon  color="#95A0B6" name="arrow-right"></u-icon>
 			</view>
 			<view class="btns" @click="submit">
-				提交
+				{{btn_text}}
 			</view>
 		</view>
 		<u-select v-model="cshow" :list="clist" label-name="title" value-name="community_id" @confirm="confirmHandler"></u-select>
@@ -59,22 +59,44 @@
 				content:'',
 				cshow:false,
 				clist:[],
-				id:''
+				id:'',
+				btn_text:'提交'
 				// community_id:'',
 				// community_title:''
 			}
 		},
 		onLoad(options) {
 			if(options.id){
+				this.btn_text = '修改'
 				this.id = options.id
 				this.$u.api.illegalstopDetail({id:this.id}).then((result)=>{
-					console.log(result)
+						var {car_num,content,images,community_id} = result
+						var list = []
+						images.map((item)=>{
+							list.push({
+								http_url:item,
+								url:item.replace(/https\:\/\/sq.wenlinapp.com\/upload\//,'')
+							})
+						})
+						this.uploadList = list
+						this.car_num = car_num
+						this.content = content
+						this.getComList(()=>{
+							this.clist.map((item)=>{
+								if(item.community_id == community_id){
+									this.community_id = community_id
+									this.community_title = item.title
+								}
+							})
+						})
 				})
+			}else{
+				this.btn_text = '提交'
 			}
 		},
 		onShow(){
 			if(!this.id){
-				this.getComList()
+				this.getComList(()=>{})
 			}
 		},
 		methods:{
@@ -100,12 +122,22 @@
 					data.images = list.toString()
 				}
 				data.content = this.content
-				this.$u.api.publishIllegalstop(data).then((result)=>{
-					this.$u.toast('发布成功')
-					uni.navigateBack({
-						delta:1
+				if(this.id){
+					data.id = this.id
+					this.$u.api.editIllegalstop(data).then((result)=>{
+						this.$u.toast('修改成功')
+						uni.navigateBack({
+							delta:1
+						})
 					})
-				})
+				}else{
+					this.$u.api.publishIllegalstop(data).then((result)=>{
+						this.$u.toast('发布成功')
+						uni.navigateBack({
+							delta:1
+						})
+					})
+				}
 			},
 			// confirmHandler(e){
 			// 	this.community_id = e[0].value

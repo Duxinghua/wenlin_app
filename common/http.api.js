@@ -35,7 +35,24 @@ const install = (Vue, vm) => {
 	let noticesAdd = (params = {}) => vm.$u.post('wxadmin/community_notices/add', params);
 	//api/wxadmin/community_activity/add 新增机构活动
 	let communityActivityAdd = (params = {}) => vm.$u.post('wxadmin/community_activity/add', params);
-		
+    //修改车辆违停曝光 {{localhost}}/api/wxadmin/community_car/editIllegalstop
+	let editIllegalstop = (params = {}) => vm.$u.post('wxadmin/community_car/editIllegalstop', params);
+	//车辆违停删除 {{localhost}}/api/wxadmin/community_car/illegalstopDelete
+	let illegalstopDelete = (params = {}) => vm.$u.post('wxadmin/community_car/illegalstopDelete', params);
+	//获取发布的公告 {{online}}/api/wxadmin/community_notices/getList
+	let noticesgetList = (params = {}) => vm.$u.post('wxadmin/community_notices/getList', params);	
+	//公告详情 {{online}}/api/wxadmin/community_notices/detail
+	let noticesdetail = (params = {}) => vm.$u.post('wxadmin/community_notices/detail', params);
+	//修改机构公告 {{online}}/api/wxadmin/community_notices/edit
+	let noticesedit = (params = {}) => vm.$u.post('wxadmin/community_notices/edit', params);
+	//公告删除 {{online}}/api/wxadmin/community_notices/delete
+	let noticesdelete = (params = {}) => vm.$u.post('wxadmin/community_notices/delete', params);
+	//获取发布的活动  {{online}}/api/wxadmin/community_activity/getList
+	let communityactivityGetList = (params = {}) => vm.$u.post('wxadmin/community_activity/getList', params);
+	//活动删除 {{online}}/api/wxadmin/community_activity/delete
+	let communityactivitydelete = (params = {}) => vm.$u.post('wxadmin/community_activity/delete', params);
+	//活动详情 {{localhost}}/api/wxadmin/community_activity/detail
+	let communityactivitydetail = (params = {}) => vm.$u.post('wxadmin/community_activity/detail', params);	
 	// 将各个定义的接口名称，统一放进对象挂载到vm.$u.api(因为vm就是this，也即this.$u.api)下
 	vm.$u.api = {
 		wxadminLogin, 
@@ -49,7 +66,16 @@ const install = (Vue, vm) => {
 		illegalstopDetail,
 		carDetail,
 		noticesAdd,
-		communityActivityAdd
+		communityActivityAdd,
+		editIllegalstop,
+		illegalstopDelete,
+		noticesgetList,
+		noticesdetail,
+		noticesedit,
+		noticesdelete,
+		communityactivityGetList,
+		communityactivitydelete,
+		communityactivitydetail
 	};
 }
 
