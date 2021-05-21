@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "通知公告",
+  "usingComponents": {
+    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom",
+    "citem": "/components/index/cartItem",
+    "nodata": "/components/index/nodata"
+  }
+}

@@ -13,8 +13,9 @@
 					<view class="cname">{{item.community.title}}</view>
 					<view class="ccount">违停<text>{{item.total}}</text>次</view>
 				</view>
+				<Nodata :title="nodataString" v-if="nodataFlag"></Nodata>
 			</view>
-			
+			<image src="../../static/image/jia.png" class="jia" @click="target"></image>
 		</view>
 		<!-- 搜索输入 -->
 		<u-popup v-model="carInputShow" mode="center" border-radius="20" close-icon-size="40" width="622" height="622" closeable="true">
@@ -41,9 +42,11 @@
 
 <script>
 	import navigationCustom from '@/components/struggler-navigationCustom/navigation-custom';
+	import Nodata from '@/components/index/nodata.vue';
 	export default{
 		components:{
-			navigationCustom
+			navigationCustom,
+			Nodata
 		},
 		data(){
 			return{
@@ -68,16 +71,23 @@
 				carInputShow:false,
 				nocarShow:false,
 				cartlist:[],
-				searchFlag:true
+				searchFlag:true,
+				nodataFlag:true,
+				nodataString:'暂无车辆信息'
 			}
 		},
 		onLoad() {
 		
 		},
 		onShow() {
-			this.carInputShow = true
+			//this.carInputShow = true
 		},
 		methods:{
+			target(){
+				uni.navigateTo({
+					url:'exposure'
+				})
+			},
 			cartHandler(item){
 				if(this.searchFlag){
 					uni.navigateTo({
@@ -97,6 +107,11 @@
 							this.cartlist = this.cartlist.concat(result.list)
 						}else{
 							this.cartlist = result.list
+						}
+						if(this.cartlist.length){
+							this.nodataFlag = false
+						}else{
+							this.nodataFlag = true
 						}
 						
 					})
@@ -119,11 +134,18 @@
 						}else{
 							this.cartlist = result.list
 						}
+						if(this.cartlist.length){
+							this.nodataFlag = false
+						}else{
+							this.nodataFlag = true
+						}
 					})
 				}
+				
 			},
 			clearHandler(){
-				this.searchFlag = true,
+				this.searchFlag = true
+				this.car_num = ''
 				this.page = 1
 				this.total = 0
 				this.getListTop()
@@ -180,6 +202,13 @@
 			box-sizing: border-box;
 			/deep/ .u-section{
 				margin:40rpx auto;
+			}
+			.jia{
+				width:133rpx;
+				height:133rpx;
+				position: fixed;
+				bottom: 353rpx;
+				right:0rpx;
 			}
 			.list{
 				display: flex;

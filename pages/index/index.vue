@@ -5,44 +5,22 @@
 			<view class="header">
 				<view class="hitem" v-for="(item,index) in menu" :key="index" :index="index" @click="go(index)">
 					<image :src="item.image" class="itembg"></image>
-<!-- 					<view class="label">
-						{{item.label}}
+					<view class="label">
+						{{item.name}}
 					</view>
-					<view class="des">
-						{{item.des}}
-					</view> -->
 				</view>
 			</view>
-			<view class="navCate">
-				<view :class="['navitem',navindex == index ? 'navactive' : '']" v-for="(item,index) in navlist" :key="index" :index="index" @click="navHandler(index)">
-					{{item}}
-				</view>
-			</view>
+
 			<view class="list">
-<!-- 				<view class="listitem" v-for="(item,index) in list" :key="index">
+				<view class="tr">
 					<view class="title">
-						<text class="label" v-if="false">
-							#物业通知
-						</text>
-						{{item.content}}
-					</view>
-					<view class="imglist" v-if="item.images">
-						<view v-if="sindex < 3" :class="[item.images.length > 2 ? 'imgitem' : (item.images.length == 2 ? 'imgitem2' : (item.images.length == 1 ? 'imgitem3' : ''))]" v-for="(sitem,sindex) in item.images" :index="sindex" :key="sindex">
-							<u-image :src="sitem" :height="autoHeight(item.images.length)" mode="aspectFill"></u-image>
+						用户留言
+						<view class="read">
+							3
 						</view>
 					</view>
-					<view class="tool" @click="selectHandler(item)">
-						<view class="time">
-							{{item.create_time | formatTime}}
-						</view>
-						<view class="arrow" >
-							<view class="aritem" v-for="(item,index) in 3" :index="index" :key="index"></view>
-						</view>
-					</view>
-				</view> -->
-				<CartItem v-for="(item,index) in list" :navindex="navindex" :key="index" :item="item" @selectHandler="selectHandler" @del="delHandler"/>
+				</view>
 			</view>
-			<image src="../../static/image/idea.png" class="idea" @click="go(4)" v-if="false"></image>
 		</view>
 		<!-- 发布活动 -->
 		<u-popup v-model="pushActiveShow" mode="center" border-radius="20" close-icon-size="40" width="622" height="458" closeable="true">
@@ -103,8 +81,8 @@
 			return{
 				config: {
 					title: '首万物业', //title
-					bgcolor: 'white', //背景颜色
-					fontcolor: 'rgba(51, 51, 51, 1)', //文字颜色，默认白色
+					bgcolor: '#FF9C00', //背景颜色
+					fontcolor: 'white', //文字颜色，默认白色
 					type: 4, //type 1，3胶囊 2，4无胶囊模式
 					transparent: false, //是否背景透明 默认白色
 					linear: false, //是为开启下滑渐变
@@ -116,23 +94,41 @@
 				scrollMaxHeight: 200, //滑动的高度限制，超过这个高度即背景全部显示
 				menu:[
 					{
-						image:'../../static/image/pushitem1.png'
+						image:'../../static/image/i1.png',
+						name:'车辆查询'
 					},
 					{
-						image:'../../static/image/pushitem2.png'
+						image:'../../static/image/i2.png',
+						name:'违停排行榜'
 					},
 					{
-						image:'../../static/image/pushitem3.png'
+						image:'../../static/image/i3.png',
+						name:'通知公告'
 					},
 					{
-						image:'../../static/image/pushitem4.png'
+						image:'../../static/image/i4.png',
+						name:'活动'
 					},
-					// {
-					// 	image:'../../static/image/pushitem5.png'
-					// },
-					// {
-					// 	image:'../../static/image/pushitem6.png'
-					// }
+					{
+						image:'../../static/image/i5.png',
+						name:'抽奖'
+					},
+					{
+						image:'../../static/image/i6.png',
+						name:'曝光台'
+					},
+					{
+						image:'../../static/image/i7.png',
+						name:'动态'
+					},
+					{
+						image:'../../static/image/i8.png',
+						name:'房产'
+					},
+					{
+						image:'../../static/image/i9.png',
+						name:'招聘'
+					}
 				],
 				navlist:[
 					'车辆违停',
@@ -189,7 +185,7 @@
 					})
 				}else if(index == 2){
 					uni.navigateTo({
-						url:'/pages/index/notices'
+						url:'/pages/index/announcelist'
 					})
 				}else if(index == 3){
 					uni.navigateTo({
@@ -303,46 +299,41 @@
 		background: white;
 		display: flex;
 		flex-direction: column;
+		background: #F7F9FF;
 		.content{
 			display: flex;
 			flex-direction: column;
 			.header{
-				padding: 25rpx;
+				padding: 50rpx 72rpx;
 				box-sizing: border-box;
 				display: flex;
 				flex-direction: row;
 				flex-wrap: wrap;
+				background: white;
+				margin-bottom: 20rpx;
 				.hitem{
 					// width:222rpx;
-					width:calc(50% - (21rpx/2));
-					height: 149rpx;
-					margin-bottom: 20rpx;
-					position: relative;
+					width:130rpx;
+					height: 190rpx;
+					margin-right:112rpx;
+					margin-bottom: 50rpx;
 					z-index: 20;
-					margin-right: 21rpx;
-					padding:25rpx;
 					box-sizing: border-box;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
 					.itembg{
-						position: absolute;
-						left:0;
-						top:0;
-						width: 100%;
-						height: 100%;
+						width: 130rpx;
+						height: 133rpx;
 						z-index: -1;
 					}
 					.label{
-						font-size: 36rpx;
-						font-family: PingFang SC;
-						font-weight: bold;
-						color: #FFFFFF;
-						margin-bottom: 25rpx;
-					}
-					.des{
-						font-size: 20rpx;
-						font-family: PingFang SC;
-						font-weight: 500;
-						color: #FFFFFF;
-						width:180rpx;
+						font-size: 30rpx;
+						font-family: Source Han Sans CN;
+						font-weight: 400;
+						color: #020433;
+						margin-top:34rpx;
+						white-space: nowrap;
 					}
 				}
 				.hitem:after{
@@ -355,132 +346,45 @@
 					// border-radius: 2rpx;
 					// background: #FFFFFF;
 				}
-				.hitem:nth-child(2n){
+				.hitem:nth-child(3n){
 					margin-right: 0rpx;
-				}
-			}
-			.navCate{
-				height: 82rpx;
-				display: flex;
-				flex-direction: row;
-				justify-content: center;
-				align-items: center;
-				width: 100%;
-				border-bottom: 2rpx solid #EEF2FA;
-				.navitem{
-					font-size: 36rpx;
-					font-family: PingFang SC;
-					font-weight: bold;
-					color: #020433;
-					margin:0 65rpx;
-					
-				}
-				.navactive{
-					color:#FF9C00;
-					position: relative;
-				}
-				.navactive:after{
-					position: absolute;
-					content:'';
-					left:50%;
-					transform: translateX(-50%);
-					bottom: -18rpx;
-					width: 44rpx;
-					height: 7rpx;
-					background: #FF9C00;
-					border-radius: 4rpx;
 				}
 			}
 			.list{
 				display: flex;
 				flex-direction: column;
-				background: #F7F9FF;
-				.listitem{
+				background: white;
+				.tr{
+					height: 138rpx;
 					display: flex;
-					flex-direction: column;
-					padding:35rpx 25rpx;
-					background: white;
-					margin-bottom: 20rpx;
+					justify-content: center;
+					align-items: center;
 					.title{
-						font-size: 34rpx;
+						width: fit-content;
+						font-size: 36rpx;
 						font-family: PingFang SC;
-						font-weight: 500;
-						color:#020433;
-						margin-bottom: 15rpx;
-						.label{
-							color: #FF9C00;
-							margin-right: 20rpx;
-						}
-					}
-					.imglist{
-						display: flex;
-						flex-direction: row;
-						flex-wrap: wrap;
-						margin-bottom: 34rpx;
-						.imgitem{
-							width: 226rpx;
-							height: 173rpx;
-							margin-right: 15rpx;
-							border-radius: 10rpx;
-							position: relative;
-						}
-						.imgitem:nth-of-type(3){
-							margin-right: 0rpx;
-						}
-						.imgitem:nth-child(1) {
-							border-radius: 7upx 0 0 7upx;
-							overflow: hidden;
-						}
-						.imgitem:nth-child(3n) {
-							border-radius: 0upx 7upx 7upx 0;
-							margin-right: 0upx;
-							overflow: hidden;
-						}
-						.imgitem2 {
-							width: calc(50% - 5upx);
-							height: 260upx;
-							border-radius: 7upx 0 0 7upx;
-							overflow: hidden;
-						}
-						.imgitem2:nth-child(2) {
-							width: calc(50% - 5upx);
-							margin-left:auto;
-							height: 260upx;
-							border-radius: 0upx 7upx 7upx 0;
-							overflow: hidden;
-						}
-						.imgitem3 {
-							width: 100%;
-							height: 380upx;
-							border-radius: 7upx;
-							overflow: hidden;
-						}
-					}
-					.tool{
-						display: flex;
-						flex-direction: row;
-						align-items: center;
-						.time{
-							font-size: 26rpx;
-							font-family: PingFang SC;
-							font-weight: 500;
-							color: #95A0B6;
-						}
-						.arrow{
+						font-weight: bold;
+						color: #020433;
+						line-height: 47rpx;
+						text-align: center;
+						position: relative;
+						.read{
+							width: 32rpx;
+							height: 32rpx;
 							display: flex;
-							flex-direction: row;
-							margin-left:auto;
-							.aritem{
-								width: 8rpx;
-								height: 8rpx;
-								background: #95A0B6;
-								border: 4rpx solid #95A0B6;
-								border-radius: 50%;
-								margin-left:5rpx;
-							}
+							align-items: center;
+							justify-content: center;
+							border-radius: 50%;
+							background: #ED3269;
+							font-size: 20rpx;
+							color:white;
+							position: absolute;
+							right:-20rpx;
+							top:-20rpx;
 						}
 					}
 				}
+				
 			}
 			.idea{
 				width: 106rpx;

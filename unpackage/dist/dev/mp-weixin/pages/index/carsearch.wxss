@@ -23,6 +23,13 @@
 .carsearch .content.data-v-193cd2d4 .u-section {
   margin: 40rpx auto;
 }
+.carsearch .content .jia.data-v-193cd2d4 {
+  width: 133rpx;
+  height: 133rpx;
+  position: fixed;
+  bottom: 353rpx;
+  right: 0rpx;
+}
 .carsearch .content .list.data-v-193cd2d4 {
   display: -webkit-box;
   display: -webkit-flex;

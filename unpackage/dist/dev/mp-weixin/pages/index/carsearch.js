@@ -159,7 +159,9 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! @/components/struggler-navigationCustom/navigation-custom */ 136));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! @/components/struggler-navigationCustom/navigation-custom */ 136));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Nodata = function Nodata() {__webpack_require__.e(/*! require.ensure | components/index/nodata */ "components/index/nodata").then((function () {return resolve(__webpack_require__(/*! @/components/index/nodata.vue */ 299));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
 
 
 
@@ -204,7 +206,8 @@ __webpack_require__.r(__webpack_exports__);
 
 {
   components: {
-    navigationCustom: navigationCustom },
+    navigationCustom: navigationCustom,
+    Nodata: Nodata },
 
   data: function data() {
     return {
@@ -229,16 +232,23 @@ __webpack_require__.r(__webpack_exports__);
       carInputShow: false,
       nocarShow: false,
       cartlist: [],
-      searchFlag: true };
+      searchFlag: true,
+      nodataFlag: true,
+      nodataString: '暂无车辆信息' };
 
   },
   onLoad: function onLoad() {
 
   },
   onShow: function onShow() {
-    this.carInputShow = true;
+    //this.carInputShow = true
   },
   methods: {
+    target: function target() {
+      uni.navigateTo({
+        url: 'exposure' });
+
+    },
     cartHandler: function cartHandler(item) {
       if (this.searchFlag) {
         uni.navigateTo({
@@ -258,6 +268,11 @@ __webpack_require__.r(__webpack_exports__);
             _this.cartlist = _this.cartlist.concat(result.list);
           } else {
             _this.cartlist = result.list;
+          }
+          if (_this.cartlist.length) {
+            _this.nodataFlag = false;
+          } else {
+            _this.nodataFlag = true;
           }
 
         });
@@ -280,11 +295,18 @@ __webpack_require__.r(__webpack_exports__);
           } else {
             _this.cartlist = result.list;
           }
+          if (_this.cartlist.length) {
+            _this.nodataFlag = false;
+          } else {
+            _this.nodataFlag = true;
+          }
         });
       }
+
     },
     clearHandler: function clearHandler() {
-      this.searchFlag = true,
+      this.searchFlag = true;
+      this.car_num = '';
       this.page = 1;
       this.total = 0;
       this.getListTop();

@@ -227,28 +227,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 {
   components: {
     navigationCustom: navigationCustom,
@@ -258,8 +236,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       config: {
         title: '首万物业', //title
-        bgcolor: 'white', //背景颜色
-        fontcolor: 'rgba(51, 51, 51, 1)', //文字颜色，默认白色
+        bgcolor: '#FF9C00', //背景颜色
+        fontcolor: 'white', //文字颜色，默认白色
         type: 4, //type 1，3胶囊 2，4无胶囊模式
         transparent: false, //是否背景透明 默认白色
         linear: false, //是为开启下滑渐变
@@ -271,24 +249,42 @@ __webpack_require__.r(__webpack_exports__);
       scrollMaxHeight: 200, //滑动的高度限制，超过这个高度即背景全部显示
       menu: [
       {
-        image: '../../static/image/pushitem1.png' },
+        image: '../../static/image/i1.png',
+        name: '车辆查询' },
 
       {
-        image: '../../static/image/pushitem2.png' },
+        image: '../../static/image/i2.png',
+        name: '违停排行榜' },
 
       {
-        image: '../../static/image/pushitem3.png' },
+        image: '../../static/image/i3.png',
+        name: '通知公告' },
 
       {
-        image: '../../static/image/pushitem4.png' }
+        image: '../../static/image/i4.png',
+        name: '活动' },
 
-      // {
-      // 	image:'../../static/image/pushitem5.png'
-      // },
-      // {
-      // 	image:'../../static/image/pushitem6.png'
-      // }
-      ],
+      {
+        image: '../../static/image/i5.png',
+        name: '抽奖' },
+
+      {
+        image: '../../static/image/i6.png',
+        name: '曝光台' },
+
+      {
+        image: '../../static/image/i7.png',
+        name: '动态' },
+
+      {
+        image: '../../static/image/i8.png',
+        name: '房产' },
+
+      {
+        image: '../../static/image/i9.png',
+        name: '招聘' }],
+
+
       navlist: [
       '车辆违停',
       '公告',
@@ -344,7 +340,7 @@ __webpack_require__.r(__webpack_exports__);
 
       } else if (index == 2) {
         uni.navigateTo({
-          url: '/pages/index/notices' });
+          url: '/pages/index/announcelist' });
 
       } else if (index == 3) {
         uni.navigateTo({

@@ -2,6 +2,7 @@
 	<view class="carinfo">
 		<navigation-custom :config="config" :scrollTop="scrollTop" @customConduct="customConduct" :scrollMaxHeight="scrollMaxHeight" />
 		<view class="content">
+
 			<view class="header">
 				{{detail.car_detail.car_num}}
 			</view>
@@ -41,6 +42,7 @@
 		<view class="content cont2">
 			<view class="list">
 				<CartItem v-for="(item,index) in detail.illegal_list" :key="index" :item="item" @selectHandler="selectHandler"/>
+				<Nodata v-if="nodataflag" :title="nodataString"></Nodata>
 			</view>
 		</view>
 		<view class="footer">
@@ -56,11 +58,13 @@
 
 <script>
 	import navigationCustom from '@/components/struggler-navigationCustom/navigation-custom';
-	import CartItem from '@/components/index/cartItem.vue'
+	import CartItem from '@/components/index/cartItem.vue';
+	import Nodata from '@/components/index/nodata.vue';
 	export default{
 		components:{
 			navigationCustom,
-			CartItem
+			CartItem,
+			Nodata
 		},
 		data(){
 			return{
@@ -90,7 +94,9 @@
 				detail:{
 					car_detail:{},
 					illegal_list:[]
-				}
+				},
+				nodataString:'暂无违停信息',
+				nodataflag:false
 			}
 		},
 		onLoad(options) {
@@ -105,6 +111,11 @@
 				this.$u.api.carDetail(data).then((result)=>{
 					this.$nextTick(() => {
 						this.detail = result
+						if(this.detail.illegal_list.length){
+							this.nodataflag = false
+						}else{
+							this.nodataflag = true
+						}
 						this.$forceUpdate()
 					})
 					

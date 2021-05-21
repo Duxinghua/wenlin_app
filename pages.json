@@ -25,6 +25,10 @@
 			{
 				"name":"pages/index/activity",
 				"path":"pages/index/activity"
+			},
+			{
+				"name":"通知公告",
+				"path":"pages/index/announcelist"
 			}
 		]
 	},
@@ -87,6 +91,12 @@
 			"path": "pages/index/activity",
 			"style": {
 				"navigationBarTitleText": "发布报名活动"
+			}
+		},
+		{
+			"path": "pages/index/announcelist",
+			"style": {
+				"navigationBarTitleText": "通知公告"
 			}
 		}
 	],

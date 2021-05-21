@@ -83,10 +83,10 @@ try {
       return __webpack_require__.e(/*! import() | uview-ui/components/u-popup/u-popup */ "uview-ui/components/u-popup/u-popup").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-popup/u-popup.vue */ 129))
     },
     uNumberKeyboard: function() {
-      return __webpack_require__.e(/*! import() | uview-ui/components/u-number-keyboard/u-number-keyboard */ "uview-ui/components/u-number-keyboard/u-number-keyboard").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-number-keyboard/u-number-keyboard.vue */ 221))
+      return __webpack_require__.e(/*! import() | uview-ui/components/u-number-keyboard/u-number-keyboard */ "uview-ui/components/u-number-keyboard/u-number-keyboard").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-number-keyboard/u-number-keyboard.vue */ 231))
     },
     uCarKeyboard: function() {
-      return __webpack_require__.e(/*! import() | uview-ui/components/u-car-keyboard/u-car-keyboard */ "uview-ui/components/u-car-keyboard/u-car-keyboard").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-car-keyboard/u-car-keyboard.vue */ 228))
+      return __webpack_require__.e(/*! import() | uview-ui/components/u-car-keyboard/u-car-keyboard */ "uview-ui/components/u-car-keyboard/u-car-keyboard").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-car-keyboard/u-car-keyboard.vue */ 238))
     }
   }
 } catch (e) {

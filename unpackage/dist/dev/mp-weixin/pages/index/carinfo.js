@@ -153,7 +153,10 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! @/components/struggler-navigationCustom/navigation-custom */ 136));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var CartItem = function CartItem() {__webpack_require__.e(/*! require.ensure | components/index/cartItem */ "components/index/cartItem").then((function () {return resolve(__webpack_require__(/*! @/components/index/cartItem.vue */ 143));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! @/components/struggler-navigationCustom/navigation-custom */ 136));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var CartItem = function CartItem() {__webpack_require__.e(/*! require.ensure | components/index/cartItem */ "components/index/cartItem").then((function () {return resolve(__webpack_require__(/*! @/components/index/cartItem.vue */ 143));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Nodata = function Nodata() {__webpack_require__.e(/*! require.ensure | components/index/nodata */ "components/index/nodata").then((function () {return resolve(__webpack_require__(/*! @/components/index/nodata.vue */ 299));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
 
 
 
@@ -215,7 +218,8 @@ __webpack_require__.r(__webpack_exports__);
 {
   components: {
     navigationCustom: navigationCustom,
-    CartItem: CartItem },
+    CartItem: CartItem,
+    Nodata: Nodata },
 
   data: function data() {
     return {
@@ -244,8 +248,10 @@ __webpack_require__.r(__webpack_exports__);
       id: '',
       detail: {
         car_detail: {},
-        illegal_list: [] } };
+        illegal_list: [] },
 
+      nodataString: '暂无违停信息',
+      nodataflag: false };
 
   },
   onLoad: function onLoad(options) {
@@ -260,6 +266,11 @@ __webpack_require__.r(__webpack_exports__);
       this.$u.api.carDetail(data).then(function (result) {
         _this.$nextTick(function () {
           _this.detail = result;
+          if (_this.detail.illegal_list.length) {
+            _this.nodataflag = false;
+          } else {
+            _this.nodataflag = true;
+          }
           _this.$forceUpdate();
         });
 
