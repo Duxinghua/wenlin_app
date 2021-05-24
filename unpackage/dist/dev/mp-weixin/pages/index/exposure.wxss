@@ -21,12 +21,18 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
+.exposure .content .titlewrap.data-v-5085105d {
+  margin-bottom: 20rpx;
+}
+.exposure .content .titlewrap.data-v-5085105d .u-input--border {
+  border: none !important;
+  border-bottom: 1rpx solid #95A0B6 !important;
+}
 .exposure .content .cheinput.data-v-5085105d {
   height: 61rpx;
   width: 100%;
   padding-left: 20rpx;
   background: rgba(255, 156, 0, 0);
-  border: 1px solid #404B69;
   -webkit-border-radius: 10rpx;
           border-radius: 10rpx;
   display: -webkit-box;
@@ -114,10 +120,10 @@
   margin-top: 20rpx;
 }
 .exposure .content .pushwrap .label.data-v-5085105d {
-  font-size: 28rpx;
+  font-size: 36rpx;
   font-family: PingFang SC;
   font-weight: bold;
-  color: #95A0B6;
+  color: #020433;
   margin-right: auto;
 }
 .exposure .content .btns.data-v-5085105d {

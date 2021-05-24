@@ -53,6 +53,10 @@ const install = (Vue, vm) => {
 	let communityactivitydelete = (params = {}) => vm.$u.post('wxadmin/community_activity/delete', params);
 	//活动详情 {{localhost}}/api/wxadmin/community_activity/detail
 	let communityactivitydetail = (params = {}) => vm.$u.post('wxadmin/community_activity/detail', params);	
+	//api/wxadmin/wx_login/updateUserInfo
+	let updateUserInfo = (params = {}) => vm.$u.post('wxadmin/wx_login/updateUserInfo', params);
+	
+	
 	// 将各个定义的接口名称，统一放进对象挂载到vm.$u.api(因为vm就是this，也即this.$u.api)下
 	vm.$u.api = {
 		wxadminLogin, 
@@ -75,7 +79,8 @@ const install = (Vue, vm) => {
 		noticesdelete,
 		communityactivityGetList,
 		communityactivitydelete,
-		communityactivitydetail
+		communityactivitydetail,
+		updateUserInfo
 	};
 }
 

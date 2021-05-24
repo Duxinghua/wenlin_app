@@ -2,7 +2,9 @@
   "navigationBarTitleText": "车辆查询详情",
   "usingComponents": {
     "u-section": "/uview-ui/components/u-section/u-section",
+    "u-popup": "/uview-ui/components/u-popup/u-popup",
     "navigation-custom": "/components/struggler-navigationCustom/navigation-custom",
-    "cart-item": "/components/index/cartItem"
+    "cart-item": "/components/index/cartItem",
+    "nodata": "/components/index/nodata"
   }
 }

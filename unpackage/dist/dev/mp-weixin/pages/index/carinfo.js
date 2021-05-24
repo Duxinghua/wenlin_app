@@ -96,7 +96,10 @@ var components
 try {
   components = {
     uSection: function() {
-      return __webpack_require__.e(/*! import() | uview-ui/components/u-section/u-section */ "uview-ui/components/u-section/u-section").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-section/u-section.vue */ 193))
+      return __webpack_require__.e(/*! import() | uview-ui/components/u-section/u-section */ "uview-ui/components/u-section/u-section").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-section/u-section.vue */ 208))
+    },
+    uPopup: function() {
+      return __webpack_require__.e(/*! import() | uview-ui/components/u-popup/u-popup */ "uview-ui/components/u-popup/u-popup").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-popup/u-popup.vue */ 137))
     }
   }
 } catch (e) {
@@ -153,7 +156,18 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! @/components/struggler-navigationCustom/navigation-custom */ 136));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var CartItem = function CartItem() {__webpack_require__.e(/*! require.ensure | components/index/cartItem */ "components/index/cartItem").then((function () {return resolve(__webpack_require__(/*! @/components/index/cartItem.vue */ 143));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Nodata = function Nodata() {__webpack_require__.e(/*! require.ensure | components/index/nodata */ "components/index/nodata").then((function () {return resolve(__webpack_require__(/*! @/components/index/nodata.vue */ 299));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! @/components/struggler-navigationCustom/navigation-custom */ 144));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var CartItem = function CartItem() {__webpack_require__.e(/*! require.ensure | components/index/cartItem */ "components/index/cartItem").then((function () {return resolve(__webpack_require__(/*! @/components/index/cartItem.vue */ 151));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Nodata = function Nodata() {__webpack_require__.e(/*! require.ensure | components/index/nodata */ "components/index/nodata").then((function () {return resolve(__webpack_require__(/*! @/components/index/nodata.vue */ 201));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -223,10 +237,11 @@ __webpack_require__.r(__webpack_exports__);
 
   data: function data() {
     return {
+      callshow: false,
       sexlist: [
-      '女',
+      '保密',
       '男',
-      '保密'],
+      '女'],
 
       num: 3,
       config: {
@@ -251,7 +266,8 @@ __webpack_require__.r(__webpack_exports__);
         illegal_list: [] },
 
       nodataString: '暂无违停信息',
-      nodataflag: false };
+      nodataflag: false,
+      mobileList: [] };
 
   },
   onLoad: function onLoad(options) {
@@ -282,11 +298,16 @@ __webpack_require__.r(__webpack_exports__);
         url: '/pages/index/exposure' });
 
     },
-    call: function call() {
-      var that = this;
-      uni.makePhoneCall({
-        phoneNumber: that.detail.car_detail.user_mobile });
+    call: function call(item) {
+      if (item.indexOf(',') > -1) {
+        this.mobileList = item.join(",");
+        this.callshow = true;
+      } else {
+        var that = this;
+        uni.makePhoneCall({
+          phoneNumber: item });
 
+      }
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

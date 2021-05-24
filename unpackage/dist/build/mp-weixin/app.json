@@ -9,7 +9,8 @@
     "pages/index/stoplist",
     "pages/index/carinfo",
     "pages/index/notices",
-    "pages/index/activity"
+    "pages/index/activity",
+    "pages/index/announcelist"
   ],
   "subPackages": [],
   "window": {

@@ -96,16 +96,16 @@ var components
 try {
   components = {
     uInput: function() {
-      return Promise.all(/*! import() | uview-ui/components/u-input/u-input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uview-ui/components/u-input/u-input")]).then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-input/u-input.vue */ 150))
+      return Promise.all(/*! import() | uview-ui/components/u-input/u-input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uview-ui/components/u-input/u-input")]).then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-input/u-input.vue */ 158))
     },
     uIcon: function() {
-      return __webpack_require__.e(/*! import() | uview-ui/components/u-icon/u-icon */ "uview-ui/components/u-icon/u-icon").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-icon/u-icon.vue */ 158))
+      return __webpack_require__.e(/*! import() | uview-ui/components/u-icon/u-icon */ "uview-ui/components/u-icon/u-icon").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-icon/u-icon.vue */ 166))
     },
     uSelect: function() {
-      return __webpack_require__.e(/*! import() | uview-ui/components/u-select/u-select */ "uview-ui/components/u-select/u-select").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-select/u-select.vue */ 165))
+      return __webpack_require__.e(/*! import() | uview-ui/components/u-select/u-select */ "uview-ui/components/u-select/u-select").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-select/u-select.vue */ 173))
     },
     uKeyboard: function() {
-      return __webpack_require__.e(/*! import() | uview-ui/components/u-keyboard/u-keyboard */ "uview-ui/components/u-keyboard/u-keyboard").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-keyboard/u-keyboard.vue */ 172))
+      return __webpack_require__.e(/*! import() | uview-ui/components/u-keyboard/u-keyboard */ "uview-ui/components/u-keyboard/u-keyboard").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-keyboard/u-keyboard.vue */ 180))
     }
   }
 } catch (e) {
@@ -162,7 +162,11 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! @/components/struggler-navigationCustom/navigation-custom */ 136));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! @/components/struggler-navigationCustom/navigation-custom */ 144));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
 
 
 
@@ -234,7 +238,7 @@ __webpack_require__.r(__webpack_exports__);
       this.btn_text = '修改';
       this.id = options.id;
       this.$u.api.illegalstopDetail({ id: this.id }).then(function (result) {var
-        car_num = result.car_num,content = result.content,images = result.images,community_id = result.community_id;
+        car_num = result.car_num,content = result.content,images = result.images,community_id = result.community_id,title = result.title;
         var list = [];
         images.map(function (item) {
           list.push({
@@ -245,6 +249,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.uploadList = list;
         _this.car_num = car_num;
         _this.content = content;
+        _this.title = title;
         _this.getComList(function () {
           _this.clist.map(function (item) {
             if (item.community_id == community_id) {
@@ -270,6 +275,11 @@ __webpack_require__.r(__webpack_exports__);
         return this.$u.toast('请输入车牌号');
       } else {
         data.car_num = this.car_num;
+      }
+      if (this.title.length < 3) {
+        return this.$u.toast('请输入标题');
+      } else {
+        data.title = this.title;
       }
       if (!this.community_id) {
         return this.$u.toast('请选择小区');

@@ -9,7 +9,7 @@
 				</view>
 				<view class="number">
 					{{ item.create_time | formatTime }}
-					<text>浏览量420</text>
+					<text>浏览量{{item.post_hits}}</text>
 				</view>
 			</view>
 			<view class="arrow" @click.stop="selectHandler"><view class="aritem" v-for="(item, index) in 3" :index="index" :key="index"></view></view>
@@ -57,6 +57,10 @@
 <script>
 export default {
 	props: {
+		type:{
+			type:[Number,String],
+			default:0
+		},
 		item: {
 			type: Object
 		},
@@ -85,15 +89,15 @@ export default {
 		},
 		edit() {
 			this.toolShow = false;
-			if(this.navindex == 0){
+			if(this.type == 0){
 				uni.navigateTo({
 					url: '/pages/index/exposure?id=' + this.item.id
 				});
-			}else if(this.navindex == 1){
+			}else if(this.type == 3){
 				uni.navigateTo({
 					url: '/pages/index/notices?id=' + this.item.id
 				});
-			}else if(this.navindex == 2){
+			}else if(this.type == 2){
 				uni.navigateTo({
 					url: '/pages/index/activity?id=' + this.item.id
 				});

@@ -4,6 +4,68 @@
  * 使用的时候，请将下面的一行复制到您的uniapp项目根目录的uni.scss中即可
  * uView自定义的css类名和scss变量，均以"u-"开头，不会造成冲突，请放心使用 
  */
+.callshop.data-v-e4bb7fc8 {
+  width: 528rpx;
+  min-height: 120rpx;
+  background: #FFFFFF;
+  -webkit-border-radius: 16rpx;
+          border-radius: 16rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
+.callshop .callitem.data-v-e4bb7fc8 {
+  width: 100%;
+  height: 120rpx;
+  padding: 0 32rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  border-bottom: 1rpx solid #DEDEDE;
+}
+.callshop .callitem .label.data-v-e4bb7fc8 {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium, PingFang-SC;
+  font-weight: 500;
+  color: #666666;
+  margin-right: 24rpx;
+}
+.callshop .callitem .mobile.data-v-e4bb7fc8 {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Bold, PingFang-SC;
+  font-weight: bold;
+  color: #333333;
+  margin-right: auto;
+}
+.callshop .callitem .btns.data-v-e4bb7fc8 {
+  width: 100rpx;
+  color: white;
+  height: 56rpx;
+  font-size: 26rpx;
+  font-family: PingFang-SC-Bold, PingFang-SC;
+  font-weight: bold;
+  line-height: 56rpx;
+  text-align: center;
+  background: #FF9C00;
+  -webkit-border-radius: 8rpx;
+          border-radius: 8rpx;
+}
+.callshop .callitem.data-v-e4bb7fc8:last-child {
+  border-bottom: 1rpx solid transparent;
+}
 .carinfo.data-v-e4bb7fc8 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -87,6 +149,7 @@
 .carinfo .cont2.data-v-e4bb7fc8 {
   padding-bottom: 0rpx !important;
   margin-bottom: 0rpx !important;
+  background: white;
 }
 .carinfo .cont2 .list.data-v-e4bb7fc8 {
   display: -webkit-box;
@@ -96,7 +159,9 @@
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
           flex-direction: column;
-  padding-bottom: 200rpx;
+  padding: 20rpx 0 200rpx 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 .carinfo .footer.data-v-e4bb7fc8 {
   width: 100%;

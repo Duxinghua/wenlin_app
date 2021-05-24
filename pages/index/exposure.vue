@@ -3,9 +3,13 @@
 		<navigation-custom :config="config" :scrollTop="scrollTop" @customConduct="customConduct" :scrollMaxHeight="scrollMaxHeight" />
 		<view class="content">
 			<view class="cheinput" @click="carHandler">
-				被曝光车牌号：
-				<u-input v-model="car_num" @click.stop="carHandler" type="text"  disabled="true" :border="false" placeholder="请选择车牌" />
+				车牌号：
+				<u-input v-model="car_num" @click.stop="carHandler" type="text"  disabled="true" :border="true" placeholder="请选择车牌" />
 			</view>
+			<view class="titlewrap">
+				<u-input v-model="title" type="text"  :border="true" placeholder="请输入标题（必填）" />
+			</view>
+			
 			<u-input v-model="content" height="200" type="textarea" :border="false"  :placeholder="placeholder"/>
 			<view class="imgwrap">
 			<view class="imgitem"  v-for="(item,index) in uploadList" :key="index"  v-if="uploadList.length">
@@ -70,7 +74,7 @@
 				this.btn_text = '修改'
 				this.id = options.id
 				this.$u.api.illegalstopDetail({id:this.id}).then((result)=>{
-						var {car_num,content,images,community_id} = result
+						var {car_num,content,images,community_id,title} = result
 						var list = []
 						images.map((item)=>{
 							list.push({
@@ -81,6 +85,7 @@
 						this.uploadList = list
 						this.car_num = car_num
 						this.content = content
+						this.title = title
 						this.getComList(()=>{
 							this.clist.map((item)=>{
 								if(item.community_id == community_id){
@@ -106,6 +111,11 @@
 					return this.$u.toast('请输入车牌号')
 				}else{
 					data.car_num = this.car_num
+				}
+				if(this.title.length < 3){
+					return this.$u.toast('请输入标题')
+				}else{
+					data.title = this.title
 				}
 				if(!this.community_id){
 					return this.$u.toast('请选择小区')
@@ -204,18 +214,29 @@
 		.content{
 			padding:25rpx;
 			box-sizing: border-box;
+			.titlewrap{
+				margin-bottom: 20rpx;
+				/deep/ .u-input--border{
+					border: none!important;
+					border-bottom: 1rpx solid #95A0B6!important;
+				}
+			}
 			.cheinput{
 				height: 61rpx;
 				width: 100%;
 				padding-left:20rpx;
 				background: rgba(255, 156, 0, 0);
-				border: 1px solid #404B69;
+				// border: 1px solid #404B69;
 				border-radius: 10rpx;
 				display: flex;
 				flex-direction: row;
 				align-items: center;
 				margin-bottom: 30rpx;
+				// /deep/ .u-input--border{
+				// 	border: 1rpx solid #95A0B6!important;
+				// }
 			}
+
 			.imgwrap{
 				display: flex;
 				flex-direction: row;
@@ -268,10 +289,10 @@
 				align-items: center;
 				margin-top:20rpx;
 				.label{
-					font-size: 28rpx;
+					font-size: 36rpx;
 					font-family: PingFang SC;
 					font-weight: bold;
-					color: #95A0B6;
+					color: #020433;
 					margin-right:auto;
 				}
 			}

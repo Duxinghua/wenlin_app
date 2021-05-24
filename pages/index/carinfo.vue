@@ -22,16 +22,16 @@
 						性别：{{sexlist[detail.car_detail.user_sex]}}
 					</view>
 					<view class="cditem">
-						职业：{{detail.car_detail.occupation}}
+						职业：{{detail.car_detail.occupation || '保密'}}
 					</view>
 					<view class="cditem">
-						车位性质：{{detail.car_detail.parking_properties}}
+						车位性质：{{detail.car_detail.parking_properties || '保密'}}
 					</view>
 					<view class="cditem">
-						车位编号：{{detail.car_detail.parking_num}}
+						车位编号：{{detail.car_detail.parking_num || '保密'}}
 					</view>
 					<view class="cditem">
-						其他：{{detail.car_detail.mark}}
+						其他：{{detail.car_detail.mark || '保密'}}
 					</view>
 				</view>
 			</view>
@@ -49,10 +49,21 @@
 			<view class="btn cancel" @click="pushCar">
 				添加违停
 			</view>
-			<view class="btn sc" @click="call">
+			<view class="btn sc" @click="call(detail.car_detail.user_mobile)">
 				联系车主
 			</view>
 		</view>
+		<u-popup v-model="callshow" mode="center" border-radius="16">
+			<view class="callshop">
+				<view class="callitem" v-for="(item,index) in mobileList" :key="index">
+					<view class="label">手机号</view>
+					<view class="mobile">{{item}}</view>
+					<view class="btns" @click="call(item)">
+						拔打
+					</view>
+				</view>
+			</view>
+		</u-popup>
 	</view>
 </template>
 
@@ -68,10 +79,11 @@
 		},
 		data(){
 			return{
+				callshow:false,
 				sexlist:[
-					'女',
+					'保密',
 					'男',
-					'保密'
+					'女'
 				],
 				num:3,
 				config: {
@@ -96,7 +108,8 @@
 					illegal_list:[]
 				},
 				nodataString:'暂无违停信息',
-				nodataflag:false
+				nodataflag:false,
+				mobileList:[]
 			}
 		},
 		onLoad(options) {
@@ -127,17 +140,69 @@
 					url:'/pages/index/exposure'
 				})
 			},
-			call(){
-				var that = this
-				uni.makePhoneCall({
-					phoneNumber:that.detail.car_detail.user_mobile
-				})
+			call(item){
+				if(item.indexOf(',') > -1){
+					this.mobileList = item.join(",")
+					this.callshow = true
+				}else{
+					var that = this
+					uni.makePhoneCall({
+						phoneNumber:item
+					})
+				}
 			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
+	.callshop{
+		width: 528rpx;
+		min-height: 120rpx;
+		background: #FFFFFF;
+		border-radius: 16rpx;
+		display: flex;
+		flex-direction: column;
+		.callitem{
+			width:100%;
+			height:120rpx;
+			padding:0 32rpx;
+			box-sizing: border-box;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			border-bottom: 1rpx solid #DEDEDE;
+			.label{
+				font-size: 28rpx;
+				font-family: PingFang-SC-Medium, PingFang-SC;
+				font-weight: 500;
+				color: #666666;
+				margin-right: 24rpx;
+			}
+			.mobile{
+				font-size: 28rpx;
+				font-family: PingFang-SC-Bold, PingFang-SC;
+				font-weight: bold;
+				color: #333333;
+				margin-right: auto;
+			}
+			.btns{
+				width: 100rpx;
+				color:white;
+				height: 56rpx;
+				font-size: 26rpx;
+				font-family: PingFang-SC-Bold, PingFang-SC;
+				font-weight: bold;
+				line-height: 56rpx;
+				text-align: center;
+				background: #FF9C00;
+				border-radius: 8rpx;
+			}
+		}
+		.callitem:last-child{
+			border-bottom: 1rpx solid transparent;
+		}
+	}
 	.carinfo{
 		display: flex;
 		flex-direction: column;
@@ -199,10 +264,12 @@
 		.cont2{
 			padding-bottom: 0rpx!important;
 			margin-bottom: 0rpx!important;
+			background: white;
 			.list{
 				display: flex;
 				flex-direction: column;
-				padding-bottom: 200rpx;
+				padding:20rpx 0 200rpx 0;
+				box-sizing: border-box;
 			}
 		}
 		.footer{

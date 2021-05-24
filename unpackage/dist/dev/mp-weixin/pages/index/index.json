@@ -3,6 +3,7 @@
   "usingComponents": {
     "u-popup": "/uview-ui/components/u-popup/u-popup",
     "navigation-custom": "/components/struggler-navigationCustom/navigation-custom",
-    "cart-item": "/components/index/cartItem"
+    "cart-item": "/components/index/cartItem",
+    "nodata": "/components/index/nodata"
   }
 }

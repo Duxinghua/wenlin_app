@@ -2,7 +2,7 @@
 	<view class="announcelist">
 		<navigation-custom :config="config" :scrollTop="scrollTop" @customConduct="customConduct" :scrollMaxHeight="scrollMaxHeight" />
 		<view class="list">
-			<Citem v-for="(item,index) in list" :key="index" :item="item"/>
+			<Citem v-for="(item,index) in list" :key="index" :item="item" :type="diyType"/>
 			<Nodata :title="nodataString" v-if="nodataFlag" />
 		</view>
 		<image src="../../static/image/jia.png" class="jia" @click="target"></image>
@@ -21,6 +21,7 @@
 		},
 		data(){
 			return {
+				diyType:3,
 				config: {
 					title: '通知公告', //title
 					bgcolor: 'white', //背景颜色

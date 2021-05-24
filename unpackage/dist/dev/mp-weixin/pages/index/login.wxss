@@ -14,6 +14,60 @@
           flex-direction: column;
   min-height: 100vh;
 }
+.login .loginwrap {
+  width: 450rpx;
+  height: 450rpx;
+  -webkit-border-radius: 20rpx;
+          border-radius: 20rpx;
+  background: white;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
+.login .loginwrap .title {
+  font-size: 28rpx;
+  color: #333333;
+}
+.login .loginwrap .btns {
+  margin-top: 50rpx;
+  width: 180rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  background: #FF9C00;
+  font-size: 30rpx;
+  font-family: Source Han Sans CN;
+  font-weight: 500;
+  color: #FFFFFF;
+  -webkit-border-radius: 30rpx;
+          border-radius: 30rpx;
+  border: none;
+}
+.login .loginwrap .ubtns {
+  margin-top: 50rpx;
+  width: 180rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  background: #EEF2FA;
+  color: #95A0B6;
+  font-size: 30rpx;
+  font-family: Source Han Sans CN;
+  font-weight: 500;
+  -webkit-border-radius: 30rpx;
+          border-radius: 30rpx;
+  border: none;
+}
 .login .bg {
   width: 100%;
   height: 1004rpx;

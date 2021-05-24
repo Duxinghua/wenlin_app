@@ -15,10 +15,13 @@
 				<view class="tr">
 					<view class="title">
 						用户留言
-						<view class="read">
+						<view class="read" v-if="false">
 							3
 						</view>
 					</view>
+				</view>
+				<view class="lc">
+					<Nodata title="暂无留言" />
 				</view>
 			</view>
 		</view>
@@ -71,11 +74,13 @@
 
 <script>
 	import navigationCustom from '@/components/struggler-navigationCustom/navigation-custom';
-	import CartItem from '@/components/index/cartItem.vue'
+	import CartItem from '@/components/index/cartItem.vue';
+	import Nodata from '@/components/index/nodata.vue';
 	export default{
 		components:{
 			navigationCustom,
-			CartItem
+			CartItem,
+			Nodata
 		},
 		data(){
 			return{
@@ -383,6 +388,12 @@
 							top:-20rpx;
 						}
 					}
+				}
+				.lc{
+					display: flex;
+					flex-direction: column;
+					padding:20rpx 0;
+					box-sizing: border-box;
 				}
 				
 			}
