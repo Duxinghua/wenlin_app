@@ -15,7 +15,6 @@
 				</view>
 				<Nodata :title="nodataString" v-if="nodataFlag"></Nodata>
 			</view>
-			<image src="../../static/image/jia.png" class="jia" @click="target"></image>
 		</view>
 		<!-- 搜索输入 -->
 		<u-popup v-model="carInputShow" mode="center" border-radius="20" close-icon-size="40" width="622" height="622" closeable="true">

@@ -14,7 +14,7 @@
 				<button class="btns" plain="true" open-type="getUserInfo" @getuserinfo="getuserinfo">
 					授权更新
 				</button>
-				<view class="ubtns" @click="loginshow = false">
+				<view class="ubtns" @click="cancelHandler">
 					取消
 				</view>
 			</view>
@@ -26,30 +26,20 @@
     export default {
 		data(){
 			return {
-				loginshow:true
+				loginshow:false
 			}
 		},
 		onLoad() {
-			var that = this
-			uni.login({
-				success: (res) => {
-					that.$u.api.wxAdminLoginByCode({code:res.code}).then((result)=>{
-				
-						uni.setStorageSync('wxadmin',result.wxadmin)
-							if(result.token.length > 2){
-								uni.setStorage({
-									key:'token',
-									data:result.token,
-									success: () => {
-											uni.reLaunch({
-												url:'./index'
-											})
-									}
-								})
-							}
-					})
-				}
-			})
+			// var that = this
+			// uni.login({
+			// 	success: (res) => {
+			// 		that.$u.api.wxAdminLoginByCode({code:res.code}).then((result)=>{
+			// 			that.loginshow = true
+			// 			uni.setStorageSync('wxadmin',result.wxadmin)
+			// 			uni.setStorageSync('token',result.token)
+			// 		})
+			// 	}
+			// })
 		},
 		methods:{
 			getuserinfo(e){
@@ -62,6 +52,9 @@
 						this.$u.toast('更新成功')
 						setTimeout(()=>{
 							this.loginshow = false
+							uni.reLaunch({
+								url:'./index'
+							})
 						},300)
 				
 				})
@@ -79,10 +72,16 @@
 						that.$u.api.wxadminLogin(data).then((result)=>{
 							uni.setStorageSync('token',result.token)
 							uni.setStorageSync('wxadmin',result.wxadmin)
+							that.loginshow = true
 						})
 					}
 				})
 				
+			},
+			cancelHandler(){
+				uni.reLaunch({
+					url:'./index'
+				})
 			},
 			target(){
 				uni.navigateTo({

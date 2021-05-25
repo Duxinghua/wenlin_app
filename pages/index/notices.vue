@@ -208,10 +208,10 @@
 				align-items: center;
 				margin-top:20rpx;
 				.label{
-					font-size: 28rpx;
+					font-size: 36rpx;
 					font-family: PingFang SC;
 					font-weight: bold;
-					color: #95A0B6;
+					color: #020433;
 					margin-right:auto;
 				}
 			}

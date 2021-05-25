@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "用户登录",
-  "usingComponents": {}
+  "usingComponents": {
+    "u-popup": "/uview-ui/components/u-popup/u-popup"
+  }
 }

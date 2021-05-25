@@ -4,6 +4,15 @@
  * 使用的时候，请将下面的一行复制到您的uniapp项目根目录的uni.scss中即可
  * uView自定义的css类名和scss变量，均以"u-"开头，不会造成冲突，请放心使用 
  */
+.jia.data-v-8d8cf314 {
+  position: fixed;
+  right: 14rpx;
+  bottom: 266rpx;
+  width: 107rpx;
+  height: 107rpx;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+}
 .carsearch.data-v-8d8cf314 {
   display: -webkit-box;
   display: -webkit-flex;

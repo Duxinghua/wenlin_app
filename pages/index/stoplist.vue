@@ -12,6 +12,7 @@
 				</view>
 			</view>
 		</view>
+		<image src="../../static/image/jia.png" class="jia" @click="target"></image>
 	</view>
 </template>
 
@@ -48,9 +49,17 @@
 			}
 		},
 		onLoad() {
+			
+		},
+		onShow(){
 			this.getListTop()
 		},
 		methods:{
+			target(){
+				uni.navigateTo({
+					url:'exposure'
+				})
+			},
 			cartHandler(item){
 				if(this.searchFlag){
 					uni.navigateTo({
@@ -142,6 +151,14 @@
 </script>
 
 <style lang="scss" scoped>
+	.jia{
+		position: fixed;
+		right:14rpx;
+		bottom: 266rpx;
+		width:107rpx;
+		height:107rpx;
+		border-radius: 50%;
+	}
 	.carsearch{
 		display: flex;
 		flex-direction: column;

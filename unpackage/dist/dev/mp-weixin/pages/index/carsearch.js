@@ -96,13 +96,13 @@ var components
 try {
   components = {
     uSearch: function() {
-      return __webpack_require__.e(/*! import() | uview-ui/components/u-search/u-search */ "uview-ui/components/u-search/u-search").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-search/u-search.vue */ 187))
+      return __webpack_require__.e(/*! import() | uview-ui/components/u-search/u-search */ "uview-ui/components/u-search/u-search").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-search/u-search.vue */ 194))
     },
     uPopup: function() {
       return __webpack_require__.e(/*! import() | uview-ui/components/u-popup/u-popup */ "uview-ui/components/u-popup/u-popup").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-popup/u-popup.vue */ 137))
     },
     uMessageInput: function() {
-      return __webpack_require__.e(/*! import() | uview-ui/components/u-message-input/u-message-input */ "uview-ui/components/u-message-input/u-message-input").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-message-input/u-message-input.vue */ 194))
+      return __webpack_require__.e(/*! import() | uview-ui/components/u-message-input/u-message-input */ "uview-ui/components/u-message-input/u-message-input").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-message-input/u-message-input.vue */ 201))
     }
   }
 } catch (e) {
@@ -159,8 +159,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! @/components/struggler-navigationCustom/navigation-custom */ 144));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Nodata = function Nodata() {__webpack_require__.e(/*! require.ensure | components/index/nodata */ "components/index/nodata").then((function () {return resolve(__webpack_require__(/*! @/components/index/nodata.vue */ 201));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
-
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! @/components/struggler-navigationCustom/navigation-custom */ 144));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Nodata = function Nodata() {__webpack_require__.e(/*! require.ensure | components/index/nodata */ "components/index/nodata").then((function () {return resolve(__webpack_require__(/*! @/components/index/nodata.vue */ 158));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 

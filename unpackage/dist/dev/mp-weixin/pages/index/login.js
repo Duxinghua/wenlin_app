@@ -120,11 +120,6 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  if (!_vm._isMounted) {
-    _vm.e0 = function($event) {
-      _vm.loginshow = false
-    }
-  }
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -186,30 +181,20 @@ var _default =
 {
   data: function data() {
     return {
-      loginshow: true };
+      loginshow: false };
 
   },
   onLoad: function onLoad() {
-    var that = this;
-    uni.login({
-      success: function success(res) {
-        that.$u.api.wxAdminLoginByCode({ code: res.code }).then(function (result) {
-
-          uni.setStorageSync('wxadmin', result.wxadmin);
-          if (result.token.length > 2) {
-            uni.setStorage({
-              key: 'token',
-              data: result.token,
-              success: function success() {
-                uni.reLaunch({
-                  url: './index' });
-
-              } });
-
-          }
-        });
-      } });
-
+    // var that = this
+    // uni.login({
+    // 	success: (res) => {
+    // 		that.$u.api.wxAdminLoginByCode({code:res.code}).then((result)=>{
+    // 			that.loginshow = true
+    // 			uni.setStorageSync('wxadmin',result.wxadmin)
+    // 			uni.setStorageSync('token',result.token)
+    // 		})
+    // 	}
+    // })
   },
   methods: {
     getuserinfo: function getuserinfo(e) {var _this = this;
@@ -222,6 +207,9 @@ var _default =
         _this.$u.toast('更新成功');
         setTimeout(function () {
           _this.loginshow = false;
+          uni.reLaunch({
+            url: './index' });
+
         }, 300);
 
       });
@@ -239,9 +227,15 @@ var _default =
           that.$u.api.wxadminLogin(data).then(function (result) {
             uni.setStorageSync('token', result.token);
             uni.setStorageSync('wxadmin', result.wxadmin);
+            that.loginshow = true;
           });
         } });
 
+
+    },
+    cancelHandler: function cancelHandler() {
+      uni.reLaunch({
+        url: './index' });
 
     },
     target: function target() {

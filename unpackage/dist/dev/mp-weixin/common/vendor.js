@@ -2759,7 +2759,41 @@ deepMerge;exports.default = _default;
 
 /***/ }),
 
-/***/ 163:
+/***/ 17:
+/*!**************************************************************!*\
+  !*** D:/wrok/wenlin_app/uview-ui/libs/function/deepClone.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; // 判断arr是否为一个数组，返回一个bool值
+function isArray(arr) {
+  return Object.prototype.toString.call(arr) === '[object Array]';
+}
+
+// 深度克隆
+function deepClone(obj) {
+  // 对常见的“非”值，直接返回原来值
+  if ([null, undefined, NaN, false].includes(obj)) return obj;
+  if (typeof obj !== "object" && typeof obj !== 'function') {
+    //原始类型直接返回
+    return obj;
+  }
+  var o = isArray(obj) ? [] : {};
+  for (var i in obj) {
+    if (obj.hasOwnProperty(i)) {
+      o[i] = typeof obj[i] === "object" ? deepClone(obj[i]) : obj[i];
+    }
+  }
+  return o;
+}var _default =
+
+deepClone;exports.default = _default;
+
+/***/ }),
+
+/***/ 170:
 /*!********************************************************!*\
   !*** D:/wrok/wenlin_app/uview-ui/libs/util/emitter.js ***!
   \********************************************************/
@@ -2816,40 +2850,6 @@ function _broadcast(componentName, eventName, params) {
     broadcast: function broadcast(componentName, eventName, params) {
       _broadcast.call(this, componentName, eventName, params);
     } } };exports.default = _default;
-
-/***/ }),
-
-/***/ 17:
-/*!**************************************************************!*\
-  !*** D:/wrok/wenlin_app/uview-ui/libs/function/deepClone.js ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; // 判断arr是否为一个数组，返回一个bool值
-function isArray(arr) {
-  return Object.prototype.toString.call(arr) === '[object Array]';
-}
-
-// 深度克隆
-function deepClone(obj) {
-  // 对常见的“非”值，直接返回原来值
-  if ([null, undefined, NaN, false].includes(obj)) return obj;
-  if (typeof obj !== "object" && typeof obj !== 'function') {
-    //原始类型直接返回
-    return obj;
-  }
-  var o = isArray(obj) ? [] : {};
-  for (var i in obj) {
-    if (obj.hasOwnProperty(i)) {
-      o[i] = typeof obj[i] === "object" ? deepClone(obj[i]) : obj[i];
-    }
-  }
-  return o;
-}var _default =
-
-deepClone;exports.default = _default;
 
 /***/ }),
 

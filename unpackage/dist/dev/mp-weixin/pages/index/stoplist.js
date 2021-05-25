@@ -93,6 +93,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 {
   components: {
     navigationCustom: navigationCustom },
@@ -124,9 +125,17 @@ __webpack_require__.r(__webpack_exports__);
 
   },
   onLoad: function onLoad() {
+
+  },
+  onShow: function onShow() {
     this.getListTop();
   },
   methods: {
+    target: function target() {
+      uni.navigateTo({
+        url: 'exposure' });
+
+    },
     cartHandler: function cartHandler(item) {
       if (this.searchFlag) {
         uni.navigateTo({

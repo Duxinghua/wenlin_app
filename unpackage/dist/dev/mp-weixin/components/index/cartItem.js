@@ -238,7 +238,15 @@ var _default =
 
   data: function data() {
     return {
-      toolShow: false };
+      toolShow: false,
+      typeList: {
+        1: '用户',
+        3: '管理员',
+        111: '居委会',
+        112: '街道',
+        113: '业委会',
+        114: '物业' } };
+
 
   },
   methods: {

@@ -96,16 +96,16 @@ var components
 try {
   components = {
     uInput: function() {
-      return Promise.all(/*! import() | uview-ui/components/u-input/u-input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uview-ui/components/u-input/u-input")]).then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-input/u-input.vue */ 158))
+      return Promise.all(/*! import() | uview-ui/components/u-input/u-input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uview-ui/components/u-input/u-input")]).then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-input/u-input.vue */ 165))
     },
     uIcon: function() {
-      return __webpack_require__.e(/*! import() | uview-ui/components/u-icon/u-icon */ "uview-ui/components/u-icon/u-icon").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-icon/u-icon.vue */ 166))
+      return __webpack_require__.e(/*! import() | uview-ui/components/u-icon/u-icon */ "uview-ui/components/u-icon/u-icon").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-icon/u-icon.vue */ 173))
     },
     uSelect: function() {
-      return __webpack_require__.e(/*! import() | uview-ui/components/u-select/u-select */ "uview-ui/components/u-select/u-select").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-select/u-select.vue */ 173))
+      return __webpack_require__.e(/*! import() | uview-ui/components/u-select/u-select */ "uview-ui/components/u-select/u-select").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-select/u-select.vue */ 180))
     },
     uKeyboard: function() {
-      return __webpack_require__.e(/*! import() | uview-ui/components/u-keyboard/u-keyboard */ "uview-ui/components/u-keyboard/u-keyboard").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-keyboard/u-keyboard.vue */ 180))
+      return __webpack_require__.e(/*! import() | uview-ui/components/u-keyboard/u-keyboard */ "uview-ui/components/u-keyboard/u-keyboard").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-keyboard/u-keyboard.vue */ 187))
     }
   }
 } catch (e) {

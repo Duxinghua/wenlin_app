@@ -1,11 +1,11 @@
 <template>
 	<view class="listitem" @click="detailHandler">
 		<view class="tops">
-			<image src="../../static/image/o1.png" class="logo"></image>
+			<image :src="item.wxadmin.avatar" class="logo"></image>
 			<view class="udes">
 				<view class="unamew">
-					<text>用户昵称七个字</text>
-					<view class="tips">物业</view>
+					<text>{{item.wxadmin.user_nickname}}</text>
+					<view class="tips">{{typeList[item.publish_type]}}</view>
 				</view>
 				<view class="number">
 					{{ item.create_time | formatTime }}
@@ -71,7 +71,15 @@ export default {
 	},
 	data() {
 		return {
-			toolShow: false
+			toolShow: false,
+			typeList:{
+				1:'用户',
+				3:'管理员',
+				111:'居委会',
+				112:'街道',
+				113:'业委会',
+				114:'物业'
+			}
 		};
 	},
 	methods: {

@@ -95,10 +95,10 @@
   margin-top: 20rpx;
 }
 .notices .content .pushwrap .label.data-v-30a1f5b5 {
-  font-size: 28rpx;
+  font-size: 36rpx;
   font-family: PingFang SC;
   font-weight: bold;
-  color: #95A0B6;
+  color: #020433;
   margin-right: auto;
 }
 .notices .content .btns.data-v-30a1f5b5 {

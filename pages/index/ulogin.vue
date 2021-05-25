@@ -16,6 +16,19 @@
 		<view class="submit" @click="loginHandler">
 			登录
 		</view>
+		<u-popup v-model="loginshow" closeable="true" mode="center" border-radius="20" >
+			<view class="loginwrap">
+				<view class="title">
+					授权更新头像信息
+				</view>
+				<button class="btns" plain="true" open-type="getUserInfo" @getuserinfo="getuserinfo">
+					授权更新
+				</button>
+				<view class="ubtns" @click="cancelHandler">
+					取消
+				</view>
+			</view>
+		</u-popup>
 	</view>
 </template>
 
@@ -24,33 +37,102 @@
 		data(){
 			return {
 				mobile:'',
-				password:''
+				password:'',
+				loginshow:false
 			}
 		},
 		onLoad() {
 			
 		},
 		methods:{
+			getuserinfo(e){
+				var userinfo = e.detail.userInfo
+				this.$u.api.updateUserInfo({
+					nickName:userinfo.nickName,
+					avatarUrl:userinfo.avatarUrl,
+					gender:userinfo.gender
+				}).then((result)=>{
+						this.$u.toast('更新成功')
+						setTimeout(()=>{
+							this.loginshow = false
+							uni.reLaunch({
+								url:'./index'
+							})
+						},300)
+				
+				})
+			},
+			cancelHandler(){
+				uni.reLaunch({
+					url:'./index'
+				})
+			},
 			loginHandler(){
+				var that = this
 				if(!this.mobile){
 					return this.$u.toast('请输入手机号')
 				}
 				if(!this.password){
 					return this.$u.toast('请输入密码')
 				}
-				this.$u.api.wxAdminLoginBySecret({mobile:this.mobile,password:this.password}).then((result)=>{
-						uni.setStorageSync('token',result.token)
-						uni.setStorageSync('wxadmin',result.wxadmin)
-						uni.redirectTo({
-							url:'/pages/index/index'
+				uni.login({
+					success: (res) => {
+						that.$u.api.wxAdminLoginBySecret({code:res.code,mobile:that.mobile,password:that.password}).then((result)=>{
+								uni.setStorageSync('token',result.token)
+								uni.setStorageSync('wxadmin',result.wxadmin)
+								that.loginshow = true
 						})
+					}
 				})
+
 			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
+	.loginwrap{
+		width:450rpx;
+		height: 450rpx;
+		border-radius: 20rpx;
+		background: white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		.title{
+			font-size: 28rpx;
+			color:#333333;
+		}
+		.btns{
+			margin-top:50rpx;
+			width: 180rpx;
+			height: 60rpx;
+			line-height: 60rpx;
+			text-align: center;
+			background: #FF9C00;
+			font-size: 30rpx;
+			font-family: Source Han Sans CN;
+			font-weight: 500;
+			color: #FFFFFF;
+			border-radius: 30rpx;
+			border:none
+		}
+		.ubtns{
+			margin-top:50rpx;
+			width: 180rpx;
+			height: 60rpx;
+			line-height: 60rpx;
+			text-align: center;
+			background: #EEF2FA;
+			color:#95A0B6;
+			font-size: 30rpx;
+			font-family: Source Han Sans CN;
+			font-weight: 500;
+			border-radius: 30rpx;
+			border:none
+		}
+	}
 	.ulogin{
 		background: white;
 		width:100%;

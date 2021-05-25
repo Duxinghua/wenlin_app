@@ -93,6 +93,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components
+try {
+  components = {
+    uPopup: function() {
+      return __webpack_require__.e(/*! import() | uview-ui/components/u-popup/u-popup */ "uview-ui/components/u-popup/u-popup").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-popup/u-popup.vue */ 137))
+    }
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
+  }
+}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -151,32 +174,72 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
       mobile: '',
-      password: '' };
+      password: '',
+      loginshow: false };
 
   },
   onLoad: function onLoad() {
 
   },
   methods: {
+    getuserinfo: function getuserinfo(e) {var _this = this;
+      var userinfo = e.detail.userInfo;
+      this.$u.api.updateUserInfo({
+        nickName: userinfo.nickName,
+        avatarUrl: userinfo.avatarUrl,
+        gender: userinfo.gender }).
+      then(function (result) {
+        _this.$u.toast('更新成功');
+        setTimeout(function () {
+          _this.loginshow = false;
+          uni.reLaunch({
+            url: './index' });
+
+        }, 300);
+
+      });
+    },
+    cancelHandler: function cancelHandler() {
+      uni.reLaunch({
+        url: './index' });
+
+    },
     loginHandler: function loginHandler() {
+      var that = this;
       if (!this.mobile) {
         return this.$u.toast('请输入手机号');
       }
       if (!this.password) {
         return this.$u.toast('请输入密码');
       }
-      this.$u.api.wxAdminLoginBySecret({ mobile: this.mobile, password: this.password }).then(function (result) {
-        uni.setStorageSync('token', result.token);
-        uni.setStorageSync('wxadmin', result.wxadmin);
-        uni.redirectTo({
-          url: '/pages/index/index' });
+      uni.login({
+        success: function success(res) {
+          that.$u.api.wxAdminLoginBySecret({ code: res.code, mobile: that.mobile, password: that.password }).then(function (result) {
+            uni.setStorageSync('token', result.token);
+            uni.setStorageSync('wxadmin', result.wxadmin);
+            that.loginshow = true;
+          });
+        } });
 
-      });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

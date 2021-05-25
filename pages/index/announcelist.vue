@@ -41,6 +41,10 @@
 			}
 		},
 		onLoad() {
+			
+		
+		},
+		onShow() {
 			this.getList()
 		},
 		methods:{
