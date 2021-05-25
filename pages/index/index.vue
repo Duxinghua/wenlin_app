@@ -3,7 +3,7 @@
 		<navigation-custom :config="config" :scrollTop="scrollTop" @customConduct="customConduct" :scrollMaxHeight="scrollMaxHeight" />
 		<view class="content">
 			<view class="header">
-				<view class="hitem" v-for="(item,index) in menu" :key="index" :index="index" @click="go(index)">
+				<view class="hitem" v-for="(item,index) in menu" v-if="index < 3 " :key="index" :index="index" @click="go(index)">
 					<image :src="item.image" class="itembg"></image>
 					<view class="label">
 						{{item.name}}
@@ -309,7 +309,7 @@
 			display: flex;
 			flex-direction: column;
 			.header{
-				padding: 50rpx 72rpx;
+				padding: 50rpx 0rpx;
 				box-sizing: border-box;
 				display: flex;
 				flex-direction: row;
@@ -318,15 +318,17 @@
 				margin-bottom: 20rpx;
 				.hitem{
 					// width:222rpx;
-					width:130rpx;
+					// width:130rpx;
+					width:33.33%;
 					height: 190rpx;
-					margin-right:112rpx;
+					// margin-right:112rpx;
 					margin-bottom: 50rpx;
 					z-index: 20;
 					box-sizing: border-box;
 					display: flex;
 					flex-direction: column;
 					align-items: center;
+					justify-content: center;
 					.itembg{
 						width: 130rpx;
 						height: 133rpx;
